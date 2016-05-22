@@ -1,0 +1,35 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+	echo "Usage: $0 ip_addr in|out|cycle|release [ipmb_addr]"
+	echo
+	echo "  Overrides the handle to the specified position."
+	echo "  'in' = handle forced in"
+	echo "  'out' = handle forced out"
+	echo "  'cycle' = handle forced out for 10 seconds then released"
+	echo "  'release' = handle not forced.  hardware switch used"
+	echo
+	echo "  Default IPMB Address = '0xa4' (AMC13 Slot)"
+	exit 1
+fi
+
+IP="$1"; shift
+ACTION="${1}"; shift
+ADDR="${1:-0xa4}"; shift
+
+case "$ACTION" in
+	in)
+	ipmitool -H "$IP" -U '' -P '' -T 0x82 -B 0 -b 7 -t "$ADDR" raw 0x32 0x0f 0x80 >/dev/null
+	;;
+	out)
+	ipmitool -H "$IP" -U '' -P '' -T 0x82 -B 0 -b 7 -t "$ADDR" raw 0x32 0x0f 0x81 >/dev/null
+	;;
+	cycle)
+	ipmitool -H "$IP" -U '' -P '' -T 0x82 -B 0 -b 7 -t "$ADDR" raw 0x32 0x0f 0x81 0x64 >/dev/null
+	;;
+	release)
+	ipmitool -H "$IP" -U '' -P '' -T 0x82 -B 0 -b 7 -t "$ADDR" raw 0x32 0x0f 0x00 >/dev/null
+	;;
+	*)
+	echo "Unknown action."
+	;;
+esac

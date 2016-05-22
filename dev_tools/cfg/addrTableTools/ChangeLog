@@ -1,0 +1,18 @@
+2015-11-20  Eric Hazen  <hazen@hazen-ThinkPad-X1-Carbon>
+
+	* Updates to address table
+
+	0x1 bit 11 "if '1', no fake event generation when resync received"
+	source IDs for multiple FEDs
+		(addr 0x7, 0x11, 0x12)
+
+	0x18 payload size now 20 bits
+	0xe0-0xea new counters
+	  0xe0/1/2 'AMC length error count for SFP0/1/2'
+	  0xe4/5/6 'AMC evn,orn,bcn mismatch for SFP0/1/2'
+	  0xe8/9/a 'AMC CRC error count for SFP0/1/2'
+	0x200 L1A history registers
+	0xe1c bits 23:21 AMC11 has been in xxx state (fix error)
+	0xe2c/d/e 'event counts built for SFP0/1/2' 16 bits only
+	
+

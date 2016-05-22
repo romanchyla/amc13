@@ -1,0 +1,21 @@
+#! /bin/bash
+
+echo "0"
+sleep 1
+echo "clock"
+sleep 1
+echo "setup"
+sleep 1
+echo "1"
+sleep 1
+echo "quit"
+sleep 1
+echo "lumi"
+sleep 1
+echo "reset"
+sleep 1
+echo "quit"
+sleep 1
+echo "exit"
+sleep 1
+echo "-1"

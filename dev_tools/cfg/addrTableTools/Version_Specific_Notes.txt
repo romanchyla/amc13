@@ -1,0 +1,25 @@
+
+Resets (reg 0 bit 2 only in CMS, HCAL)
+
+G-2 only:  reg 1 bit 9 = SFP PRBS test is enabled
+    	   reg 1 bit 5 = T3 trigger enable
+
+HCAL, CMS only:
+      	  S-Link ID in reg 4 bits 16-31
+	  Reg 0x19 bits 15-12  T1 TTS state
+	      	   bits 20-16  encoded TTS from enabled AMCs
+
+          new Reg 0x20-29  BGO registers
+
+	  0x80-0x97  DAQLSC counters and status
+
+	  0x800 AMC counters
+	    0x74-0x79 (TTS update, TTC update, bad AMC CRC)
+
+G-2 Only:
+	  0x1000 - 0x13ff SFP0 registers
+
+HCAL Only:
+	  0x1000 trigger mask registers
+
+	  

@@ -1,0 +1,31 @@
+connect /home/dzou/work/amc13/amc13/etc/amc13/connectionSN82.xml
+connect /home/dzou/work/amc13/amc13/etc/amc13/connectionSN97.xml
+connect /home/dzou/work/amc13/amc13/etc/amc13/connectionSN64.xml
+connect /home/dzou/work/amc13/amc13/etc/amc13/connectionSN100.xml
+connect /home/dzou/work/amc13/amc13/etc/amc13/connectionSN106.xml
+connect /home/dzou/work/amc13/amc13/etc/amc13/connectionSN74.xml
+connect /home/dzou/work/amc13/amc13/etc/amc13/connectionSN99.xml
+sel 0
+en 1,4,5,6,11,12 T
+localL1A R 1 1000
+sel 1
+wv 0x18 0xf00
+wv 0 1
+sel 2
+wv 0x18 0xf00
+wv 0 1
+sel 3 
+wv 0x18 0xf00
+wv 0 1
+sel 4
+wv 0x18 0xf00
+wv 0 1
+sel 5
+wv 0x18 0xf00
+wv 0 1
+sel 6
+wv 0x18 0xf00
+wv 0 1
+sel 0
+wv 0 1
+q

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connections>
+  <connection id="T1" uri="ipbusudp-2.0://192.168.1.73:50001" address_table="file://AMC13XG_K0x207S0x21.xml" />
+  <connection id="T2" uri="ipbusudp-2.0://192.168.1.72:50001" address_table="file://exampleT2Addr.xml" />
+</connections>

@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+	echo "Usage: $0 ip_addr on|off [ipmb_addr]"
+	echo
+	echo "  Enables or disables backend power."
+	echo
+	echo "  Default IPMB Address = '0xa4' (AMC13 Slot)"
+	exit 1
+fi
+
+IP="$1"; shift
+ACTION="${1}"; shift
+ADDR="${1:-0xa4}"; shift
+
+case "$ACTION" in
+	on)
+	ipmitool -H "$IP" -U '' -P '' -T 0x82 -B 0 -b 7 -t "$ADDR" raw 0x32 0x01 0x41 >/dev/null
+	;;
+	off)
+	ipmitool -H "$IP" -U '' -P '' -T 0x82 -B 0 -b 7 -t "$ADDR" raw 0x32 0x01 0x40 >/dev/null
+	;;
+	*)
+	echo "Unknown action."
+	;;
+esac

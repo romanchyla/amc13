@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Generated from AMC13XG_K0x207S0x21.csv -->
+<!-- Input fields:  Address LoBit HiBit Permission Name Description Tags Mode Size Parameters-->
+<node id="TOP">
+   <node id="ACTION">
+      <node id="LOCAL_TRIG">
+         <node id="CONTINUOUS" address="0x0" permission="w" description="set continuous local L1A (setup with register 0x1c)" tags="Control0_bit26" mask="0x04000000"/>
+         <node id="SEND_BURST" address="0x0" permission="w" description="Send burst (possibly single) local L1A" mask="0x00000400"/>
+         <node id="SEND_ECR" address="0x0" permission="w" description="sends event number reset thru TTC when in local L1A mode" tags="Control0_bit11" mask="0x00000800"/>
+         <node id="SEND_OCR" address="0x0" permission="w" description="sends orbit number reset thru TTC when in local L1A mode" mask="0x00001000"/>
+      </node>
+      <node id="MONITOR_BUFFER">
+         <node id="NEXT_PAGE" address="0xc" permission="w" description="SDRAM increment page number by 1 in run mode" mask="0x00000001"/>
+      </node>
+      <node id="RESETS">
+         <node id="COUNTER" address="0x0" permission="w" description="counter reset" mask="0x00000002"/>
+         <node id="EVN" address="0x0" permission="w" description="reset event number" mask="0x00000800"/>
+         <node id="GENERAL" address="0x0" permission="w" description="general reset (ddr3 memory controller not included)" mask="0x00000001"/>
+         <node id="ORN" address="0x0" permission="w" description="reset orbit number" mask="0x00001000"/>
+         <node id="SDRAM" address="0x0" permission="w" description="reset ddr3 memory controller" mask="0x00000020"/>
+      </node>
+   </node>
+   <node id="CONF">
+      <node id="AMC">
+         <node id="BC0_COMPENSATION" address="0x6" permission="rw" description="AMC set BC0 compensation, default to 0x18" mask="0x0000001f"/>
+         <node id="ENABLE_MASK" address="0x3" permission="rw" description="1 enables AMC1..12" mask="0x00000fff"/>
+         <node id="FAKE_DATA_SIZE" address="0x18" permission="rw" description="scale factor( = contents + 1). Note: if bit 18 is set to '1', these bits are ignored." mask="0x0003ffff"/>
+         <node id="TRIGGER_MASK" address="0x19" permission="rw" description="AMC Trigger Mask Register" mask="0x000000ff"/>
+         <node id="TTS_DISABLE_MASK" address="0x1a" permission="rw" description="Disable corresponding AMCs TTS input signal" mask="0x00000fff"/>
+      </node>
+      <node id="AMC_IF">
+         <node id="AMC_HEADER_WE" address="0xe13" permission="rw" description="AMC_if status: AMC_header_we" mask="0x00000700"/>
+         <node id="AMC_WC_WE" address="0xe13" permission="rw" description="AMC_if status: AMC_wc_we" mask="0x00007000"/>
+         <node id="EVENT_AVL" address="0xe13" permission="r" description="AMC_if status: event_avl" mask="0x00080000"/>
+         <node id="EVN_EMPTY" address="0xe13" permission="r" description="AMC_if status: evn_empty" mask="0x00100000"/>
+         <node id="FAKE_EMPTY_CNT" address="0xe17" permission="r" description="AMC_if status: fake_empty_cnt"/>
+         <node id="FAKE_EVT_CNT" address="0xe16" permission="r" description="AMC_if status: fake_evt_cnt"/>
+         <node id="FAKE_HEADER_CNT" address="0xe15" permission="r" description="AMC_if status: fake_header_cnt"/>
+         <node id="FAKE_WORD_CNT" address="0xe14" permission="r" description="AMC_if status: fake_word_cnt"/>
+         <node id="INIT_BLDR" address="0xe13" permission="r" description="AMC_if status: init_bldr" mask="0x00200000"/>
+         <node id="MON_BUF_AVL" address="0xe13" permission="r" description="AMC_if status: mon_buf_avl" mask="0x00400000"/>
+         <node id="SEL_AMC" address="0xe13" permission="rw" description="AMC_if status: sel_AMC" mask="0x0000000f"/>
+         <node id="SEL_CDF" address="0xe13" permission="rw" description="AMC_if status: sel_CDF" mask="0x00000800"/>
+         <node id="SEL_EVN" address="0xe13" permission="rw" description="AMC_if status: event_evn" mask="0x000000c0"/>
+         <node id="WC_FIFO_FULL" address="0xe13" permission="r" description="AMC_if status: wc_fifo_full" mask="0x00070000"/>
+      </node>
+      <node id="BC0_WORKS_ONLY_ONCE" address="0x8" permission="rw" description="if '1'', TTC BC0 command works only once after reset" mask="0x00001000"/>
+      <node id="BCN_OFFSET" address="0x8" permission="rw" description="BcN offset" mask="0x00000fff"/>
+      <node id="CAL_ENABLE" address="0x9" permission="rw" description="Enable calibration events in orbit gap (HCAL), default '1'" mask="0x80000000"/>
+      <node id="CAL_WINDOW_LOWER" address="0x9" permission="r" description="read only entire lower window limit" mask="0x00000fff"/>
+      <node id="CAL_WINDOW_LOWER_FIXED" address="0x9" permission="r" description="fixed as 110110" mask="0x00000fc0"/>
+      <node id="CAL_WINDOW_LOWER_PROG" address="0x9" permission="rw" description="settable part of calibration window lower limit,3456 minimum(not included), default to '011101'" mask="0x0000003f"/>
+      <node id="CAL_WINDOW_UPPER" address="0x9" permission="r" description="read only entire upper window limit" mask="0x0fff0000"/>
+      <node id="CAL_WINDOW_UPPER_FIXED" address="0x9" permission="r" description="fixed as 110110" mask="0x0fc00000"/>
+      <node id="CAL_WINDOW_UPPER_PROG" address="0x9" permission="rw" description="settable part of calibration window upper limit,3519 maximum(included), default to '100110'" mask="0x003f0000"/>
+      <node id="DIAG">
+         <node id="DISABLE_EVB" address="0x1" permission="rw" description="if '1', pauses event building. For debugging only" mask="0x00000008"/>
+         <node id="ENABLE_MEMTEST" address="0x1" permission="rw" description="1 enables memory self test" mask="0x00000010"/>
+         <node id="FAKE_TTC_ENABLE" address="0x1" permission="rw" description="if '1', TTS output is TTC signal output(you have to set bit 2 also to use this feature)" mask="0x00000100"/>
+         <node id="MEMTEST_COUNTER" address="0x1" permission="rw" description="if '0', memory test uses 64bit PRBS. If '1', uses 32 bit sequencial numbers." mask="0x00000040"/>
+         <node id="TTS_TEST_ENABLE" address="0x1" permission="rw" description="if '1', TTS outputs correspond to bits 3-0 of register 0x19 instead of TTS state when run bit(bit 0) is '1', this bit will be forced to '0'" mask="0x00001000"/>
+      </node>
+      <node id="EVB">
+         <node id="DISABLE_MON_PRESCALE" address="0x2" permission="rw" description="" mask="0x00040000"/>
+         <node id="ENABLE_DAQLSC" address="0x1" permission="rw" description="1 enables DAQLSC" mask="0x00000002"/>
+         <node id="ENABLE_MASKED_EVN" address="0x2" permission="rw" description="If set to '1', bit 22-19 determine which events will be saved" mask="0x00800000"/>
+         <node id="FLUSH_ON_RESYNC" address="0x1" permission="rw" description="if '1', send all data to downstream when ttc reset is receivedn if '0', flush all data when ttc reset is received." mask="0x00002000"/>
+         <node id="MON_FULL_STOP_EVB" address="0x1" permission="rw" description="if '1', monitor buffer full will stop event builder" mask="0x00004000"/>
+         <node id="SELECT_MASKED_EVN" address="0x2" permission="rw" description="Value n=0..15, save events with EvN low (20-n) bits '0'" mask="0x00780000"/>
+         <node id="SET_MON_PRESCALE" address="0x2" permission="w" description="scale factor( = contents + 1). Note: if bit 18 is set to '1', these bits are ignored." mask="0x0000ffff"/>
+      </node>
+      <node id="ID">
+         <node id="EVT_STAT" address="0x7" permission="rw" description="CMS evt_stat for output data" mask="0x000ff000"/>
+         <node id="EVT_TY" address="0x7" permission="rw" description="CMS evt_ty for output data" mask="0x00f00000"/>
+         <node id="FED_ID" address="0x4" permission="rw" description="SLINK ID(bits 15-14 always 0)" mask="0xffff0000"/>
+         <node id="SOURCE_ID" address="0x7" permission="rw" description="CMS Source ID for output data" mask="0x00000fff"/>
+      </node>
+      <node id="LOCAL_TRIG">
+         <node id="FAKE_DATA_ENABLE" address="0x1" permission="rw" description="if '1', generate fake event upon receiving L1A" mask="0x00000080"/>
+         <node id="NUM_TRIG" address="0x1c" permission="rw" description="Local L1A burst length (N+1) so =0 means 1 L1A" mask="0x0fff0000"/>
+         <node id="RATE" address="0x1c" permission="rw" description="Local L1A rate. L1A every N+1 orbits@BcN=0x1f4, N+1 BX or 2*N's random" mask="0x0000ffff"/>
+         <node id="RULES" address="0x1c" permission="rw" description="Local L1A trig rules: 0=all; 1=all but rule 4; 2=rules 1+2; 3=only rule 1" mask="0x30000000"/>
+         <node id="TYPE" address="0x1c" permission="rw" description="Local L1A type: 0=per orbit 2=per BX 3=random" mask="0xc0000000"/>
+      </node>
+      <node id="ORN_OFFSET" address="0x8" permission="rw" description="OrN offset" mask="0x000f0000"/>
+      <node id="RUN" address="0x1" permission="rw" description="run mode" mask="0x00000001"/>
+      <node id="SFP">
+         <node id="DISABLE_TTS" address="0x4" permission="rw" description="1 disables TTS transmitter" mask="0x00008000"/>
+         <node id="DISABLE_TX_MASK" address="0x4" permission="rw" description="1 disables SFP0..2 transmitter" mask="0x00007000"/>
+         <node id="ENABLE_MASK" address="0x3" permission="rw" description="1 enables SFP0..2" mask="0x00007000"/>
+      </node>
+      <node id="TTC">
+         <node id="ENABLE_INTERNAL_L1A" address="0x1" permission="rw" description="if '1', uses internally generated L1A" mask="0x00000004"/>
+         <node id="ENABLE_SPECIAL_BCST" address="0x1" permission="rw" description="1 enables non-standard TTCrx broadcast commands" mask="0x00000020"/>
+      </node>
+      <node id="TTS_TEST_PATTERN" address="0x19" permission="rw" description="TTS output test pattern" mask="0x00000f00"/>
+   </node>
+   <node id="FULL_MEMORY" address="0x8000000" permission="rw" description="full memory read/write access. (write disabled in run mode) thru 0xfffffff" mode="incremental" size="0x7fffff"/>
+   <node id="MONITOR_BUFFER_RAM" address="0x20000" permission="r" description="memory read window" mode="incremental" size="0x1ffff"/>
+   <node id="STATUS">
+      <node id="AMC">
+         <node id="BC0_LOCKED_MASK" address="0x6" permission="r" description="AMC1..12 BC0 locked" parameters="status=2" mask="0x0fff0000"/>
+         <node id="EVENTINFO_DAV" address="0xe0c" permission="r" description="AMC_if status: EventInfo_dav" parameters="status=9" mask="0x00000fff"/>
+         <node id="LINK_VERS_WRONG_MASK" address="0x5" permission="r" description="1 AMC1..12 link version wrong" parameters="status=1;show=nz" mask="0x00000fff"/>
+         <node id="LOSS_OF_SYNC_MASK" address="0x5" permission="r" description="0 AMC1..12 loss of sync" parameters="status=1;show=z" mask="0x0fff0000"/>
+         <node id="QPLL_UNLOCK_AMC_1-4" address="0xe0c" permission="r" description="AMC_if status: 1 if qpll for AMC1-4 not locked" parameters="status=1;show=nz" mask="0x00001000"/>
+         <node id="QPLL_UNLOCK_AMC_5-8" address="0xe0c" permission="r" description="AMC_if status: 1 if qpll for AMC5-8 not locked" parameters="status=1;show=nz" mask="0x00002000"/>
+         <node id="QPLL_UNLOCK_AMC_9-12" address="0xe0c" permission="r" description="AMC_if status: 1 if qpll for AMC9-12 not locked" parameters="status=1;show=nz" mask="0x00004000"/>
+      </node>
+      <node id="AMC01" module="file://AMCCounters.xml" address="0x800" />
+      <node id="AMC02" module="file://AMCCounters.xml" address="0x880" />
+      <node id="AMC03" module="file://AMCCounters.xml" address="0x900" />
+      <node id="AMC04" module="file://AMCCounters.xml" address="0x980" />
+      <node id="AMC05" module="file://AMCCounters.xml" address="0xa00" />
+      <node id="AMC06" module="file://AMCCounters.xml" address="0xa80" />
+      <node id="AMC07" module="file://AMCCounters.xml" address="0xb00" />
+      <node id="AMC08" module="file://AMCCounters.xml" address="0xb80" />
+      <node id="AMC09" module="file://AMCCounters.xml" address="0xc00" />
+      <node id="AMC10" module="file://AMCCounters.xml" address="0xc80" />
+      <node id="AMC11" module="file://AMCCounters.xml" address="0xd00" />
+      <node id="AMC12" module="file://AMCCounters.xml" address="0xd80" />
+      <node id="AMC_IF">
+         <node id="CDF_RA" address="0xe12" permission="r" description="AMC_if status: CDF_ra" mask="0x01ff0000"/>
+         <node id="CDF_WA" address="0xe12" permission="r" description="AMC_if status: CDF_wa" mask="0x000001ff"/>
+         <node id="EVN_CNT" address="0xe0f" permission="r" description="AMC_if status: evn_cnt" mask="0x000000ff"/>
+         <node id="EVN_RA" address="0xe10" permission="r" description="AMC_if status: evn_ra" mask="0x01ff0000"/>
+         <node id="EVN_WA" address="0xe10" permission="r" description="AMC_if status: evn_wa" mask="0x000001ff"/>
+      </node>
+      <node id="AMC_LINK_READY_MASK" address="0x3" permission="r" description="1 indicates AMC1..12 Link Ready" parameters="status=1" mask="0x0fff0000"/>
+      <node id="AMC_TTC">
+         <node id="BC0_LOCKED_MASK" address="0xe0d" permission="r" description="1 if corresponding AMC enabled and BC0 locked" parameters="status=2" mask="0x00000fff"/>
+         <node id="TTC_LOCKED_MASK" address="0xe0d" permission="r" description="1 if corresponding AMC enabled and TTC locked" parameters="status=2" mask="0x0fff0000"/>
+      </node>
+      <node id="AMC_TTS_STATE" address="0x19" permission="r" description="encoded TTS from enabled AMCs" parameters="status=1" mask="0x001f0000"/>
+      <node id="DIAG">
+         <node id="DDR_RESET_DONE" address="0x0" permission="r" description="if 0, DDR memory reset done" parameters="status=1;show=nz" mask="0x00008000"/>
+         <node id="DDR_STATUS_HI" address="0xb" permission="r" description="memory status register upper word (debug only, read only), bits 0-10 SDRAM write page address (?)" parameters="status=9"/>
+         <node id="DDR_STATUS_LO" address="0xa" permission="r" description="memory status register lower word (debug only, read only)" parameters="status=9"/>
+      </node>
+      <node id="EVB">
+         <node id="DATA_READY_MASK" address="0x10" permission="r" description="event data ready in event buffer of event builders" parameters="status=9" mask="0x00000007"/>
+         <node id="DDR3_WRITE_PORT_FULL" address="0x10" permission="r" description="ddr3 event data write port input FIFO full" parameters="status=9" mask="0x00007000"/>
+         <node id="DDR3_WRITE_PORT_READY_MASK" address="0x10" permission="r" description="ddr3 event data write port ready" parameters="status=9" mask="0x00000700"/>
+         <node id="EVENT_SIZE_MASK" address="0x10" permission="r" description="event size in event buffer of event builders" parameters="status=9" mask="0x00000070"/>
+         <node id="OVERFLOW_WARNING" address="0x0" permission="r" description="L1A overflow warning" parameters="status=1;show=nz" mask="0x00002000"/>
+         <node id="SYNC_LOST" address="0x0" permission="r" description="TTC sync lost (L1A buffer overflow)" parameters="status=1;show=nz" mask="0x00000200"/>
+         <node id="TCP_BUFFER_AVAILABLE" address="0x10" permission="r" description="TCP buffer available" parameters="status=9" mask="0x00010000"/>
+      </node>
+      <node id="FIRMWARE_VERS" address="0x1" permission="r" description="read only Virtex firmware version" parameters="status=1" mask="0xffff0000"/>
+      <node id="FPGA">
+         <node id="DIE_TEMP" address="0x30" permission="r" description="V6 die temperature in unit of 0.1 degree Celsius" parameters="status=8"/>
+         <node id="DNA_HI" address="0x1f" permission="r" description="FPGA DNA bits 56-32" parameters="status=8" mask="0x01ffffff"/>
+         <node id="DNA_LO" address="0x1e" permission="r" description="FPGA DNA bits 31-0" parameters="status=8"/>
+         <node id="MV_0V75_VREF" address="0x3c" permission="r" description="0.75V DDR3_Vref power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_0V75_VTT" address="0x3b" permission="r" description="0.75V DDR3_Vtt power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_12V0" address="0x38" permission="r" description="12V power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_1V0" address="0x31" permission="r" description="1.0V analog power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_1V0_BRAM" address="0x3e" permission="r" description="1.0V VccBRAM power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_1V0_INT" address="0x33" permission="r" description="1.0V Vccint power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_1V2" address="0x32" permission="r" description="1.2V analog power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_1V5" address="0x34" permission="r" description="1.5V power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_1V8_AUX" address="0x3d" permission="r" description="1.8V VccAux power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_1V8_GTX" address="0x39" permission="r" description="1.8V VccAuxGTX power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_2V0" address="0x3a" permission="r" description="2.0V VccAuxIO power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_2V5" address="0x35" permission="r" description="2.5V power voltage in millivolt" parameters="status=8"/>
+         <node id="MV_3V3" address="0x36" permission="r" description="3.3V power voltage in millivolt" parameters="status=8"/>
+      </node>
+      <node id="GENERAL">
+         <node id="BUSY_TIME_HI" address="0x4d" permission="r" description="busy time counter bits[47:32]" parameters="status=1;show=nz" mask="0x0000ffff"/>
+         <node id="BUSY_TIME_LO" address="0x4c" permission="r" description="busy time counter bits[31:0]" parameters="status=1;show=nz"/>
+         <node id="L1A_COUNT_HI" address="0x47" permission="r" description="L1A counter bits[47:32]" parameters="status=1" mask="0x0000ffff"/>
+         <node id="L1A_COUNT_LO" address="0x46" permission="r" description="L1A counter bits[31:0]" parameters="status=1"/>
+         <node id="OF_WARN_TIME_HI" address="0x51" permission="r" description="L1A overflow warning time counter bits[47:32]" parameters="status=1;show=nz" mask="0x0000ffff"/>
+         <node id="OF_WARN_TIME_LO" address="0x50" permission="r" description="L1A overflow warning time counter bits[31:0]" parameters="status=1;show=nz"/>
+         <node id="READY_TIME_HI" address="0x4b" permission="r" description="ready time counter bits[47:32]" parameters="status=1" mask="0x0000ffff"/>
+         <node id="READY_TIME_LO" address="0x4a" permission="r" description="ready time counter bits[31:0]" parameters="status=1"/>
+         <node id="RUN_TIME_HI" address="0x49" permission="r" description="run time counter bits[47:32]" parameters="status=1" mask="0x0000ffff"/>
+         <node id="RUN_TIME_LO" address="0x48" permission="r" description="run time counter bits[31:0]" parameters="status=1"/>
+         <node id="SYNC_LOST_TIME_HI" address="0x4f" permission="r" description="L1A sync lost time counter bits[47:32]" parameters="status=1;show=nz" mask="0x0000ffff"/>
+         <node id="SYNC_LOST_TIME_LO" address="0x4e" permission="r" description="L1A sync lost time counter bits[31:0]" parameters="status=1;show=nz"/>
+      </node>
+      <node id="LOCAL_TRIG">
+         <node id="CONTINUOUS_ON" address="0x0" permission="r" description="continous local L1A on (setup with register 0x1c)" parameters="status=3" mask="0x00000400"/>
+      </node>
+      <node id="LSC">
+         <node id="EVB">
+            <node id="NEXT_MON_BUF" address="0xa3" permission="r" description="DAQLSC_if: next monitor buffer for all event builder" parameters="status=9" mask="0x0fff0000"/>
+         </node>
+         <node id="EVB0">
+            <node id="EVT_DATA_RDY" address="0xa4" permission="r" description="DAQLSC_if: evt_data_rdy" parameters="status=9" mask="0x00000700"/>
+            <node id="HEADER" address="0xa4" permission="r" description="DAQLSC_if: header" parameters="status=9" mask="0x00100000"/>
+            <node id="LINKFULL" address="0xa4" permission="r" description="DAQLSC_if: LinkFull_n" parameters="status=9" mask="0x00010000"/>
+            <node id="NEXT_MON_BUF" address="0xa2" permission="r" description="DAQLSC_if: next monitor buffer for event builder 0" parameters="status=9" mask="0x00000fff"/>
+            <node id="READBUSY" address="0xa4" permission="r" description="DAQLSC_if: ReadBusy" parameters="status=9" mask="0x00007000"/>
+            <node id="WP_FIFO_FULL" address="0xa4" permission="r" description="DAQLSC_if: wport_FIFO_full" parameters="status=9" mask="0x00000070"/>
+            <node id="WP_RDY" address="0xa4" permission="r" description="DAQLSC_if: wport_rdy" parameters="status=9" mask="0x00000007"/>
+         </node>
+         <node id="EVB1">
+            <node id="EVT_DATA_RDY" address="0xa4" permission="r" description="DAQLSC_if: evt_data_rdy" parameters="status=9" mask="0x00000700"/>
+            <node id="HEADER" address="0xa4" permission="r" description="DAQLSC_if: header" parameters="status=9" mask="0x00200000"/>
+            <node id="LINKFULL" address="0xa4" permission="r" description="DAQLSC_if: LinkFull_n" parameters="status=9" mask="0x00020000"/>
+            <node id="NEXT_MON_BUF" address="0xa2" permission="r" description="DAQLSC_if: next monitor buffer for event builder 1" parameters="status=9" mask="0x0fff0000"/>
+            <node id="READBUSY" address="0xa4" permission="r" description="DAQLSC_if: ReadBusy" parameters="status=9" mask="0x00007000"/>
+            <node id="WP_FIFO_FULL" address="0xa4" permission="r" description="DAQLSC_if: wport_FIFO_full" parameters="status=9" mask="0x00000070"/>
+            <node id="WP_RDY" address="0xa4" permission="r" description="DAQLSC_if: wport_rdy" parameters="status=9" mask="0x00000007"/>
+         </node>
+         <node id="EVB2">
+            <node id="EVT_DATA_RDY" address="0xa4" permission="r" description="DAQLSC_if: evt_data_rdy" parameters="status=9" mask="0x00000700"/>
+            <node id="HEADER" address="0xa4" permission="r" description="DAQLSC_if: header" parameters="status=9" mask="0x00400000"/>
+            <node id="LINKFULL" address="0xa4" permission="r" description="DAQLSC_if: LinkFull_n" parameters="status=9" mask="0x00040000"/>
+            <node id="NEXT_MON_BUF" address="0xa3" permission="r" description="DAQLSC_if: next monitor buffer for event builder 2" parameters="status=9" mask="0x00000fff"/>
+            <node id="READBUSY" address="0xa4" permission="r" description="DAQLSC_if: ReadBusy" parameters="status=9" mask="0x00007000"/>
+            <node id="WP_FIFO_FULL" address="0xa4" permission="r" description="DAQLSC_if: wport_FIFO_full" parameters="status=9" mask="0x00000070"/>
+            <node id="WP_RDY" address="0xa4" permission="r" description="DAQLSC_if: wport_rdy" parameters="status=9" mask="0x00000007"/>
+         </node>
+         <node id="MON_BUF_COUNT" address="0xa1" permission="r" description="DAQLSC_if: Monitored buffer count" parameters="status=9" mask="0x00001fff"/>
+         <node id="SFP0">
+            <node id="EVT_COUNT" address="0xa5" permission="r" description="event count for SFP0" parameters="status=1;show=nz"/>
+            <node id="WORD_COUNT" address="0xa8" permission="r" description="word count for SFP0" parameters="status=1;show=nz"/>
+         </node>
+         <node id="SFP1">
+            <node id="EVT_COUNT" address="0xa6" permission="r" description="event count for SFP1" parameters="status=1;show=nz"/>
+            <node id="WORD_COUNT" address="0xa9" permission="r" description="word count for SFP1" parameters="status=1;show=nz"/>
+         </node>
+         <node id="SFP2">
+            <node id="EVT_COUNT" address="0xa7" permission="r" description="event count for SFP2" parameters="status=1;show=nz"/>
+            <node id="WORD_COUNT" address="0xaa" permission="r" description="word count for SFP2" parameters="status=1;show=nz"/>
+         </node>
+      </node>
+      <node id="MONITOR_BUFFER">
+         <node id="AVAILABLE" address="0x10" permission="r" description="monitor buffer available" parameters="status=2" mask="0x00020000"/>
+         <node id="EMPTY" address="0x0" permission="r" description="monitor buffer empty" parameters="status=2" mask="0x00000008"/>
+         <node id="EOI_TYPE" address="0xd" permission="r" description="all 0 if not in catch mode, otherwise gives the type of error of the bad event" parameters="status=9" mask="0x00ff0000"/>
+         <node id="EVENTS_AFTER_EOI" address="0xd" permission="r" description="all 0 if not in catch mode, otherwise gives the number of events stored after the bad event" parameters="status=9" mask="0x7f000000"/>
+         <node id="FULL" address="0x0" permission="r" description="monitor buffer full" parameters="status=1;show=nz" mask="0x00000004"/>
+         <node id="OVERFLOW" address="0x0" permission="r" description="monitor buffer overflow" parameters="status=1;show=nz" mask="0x00000002"/>
+         <node id="PAGE_NO" address="0xc" permission="rw" description="SDRAM page number (r/w only when not in run mode)" mask="0x00001fff"/>
+         <node id="UNREAD_EVENTS" address="0xe" permission="r" description="number of unread events captured by monitor" parameters="status=1;show=nz" mask="0x000003ff"/>
+         <node id="WORDS_SFP0" address="0xd" permission="r" description="SFP 0 monitored event size in 32-bit word. 0 if no data available" parameters="status=9" mask="0x0001ffff"/>
+         <node id="WORDS_SFP1" address="0xf" permission="r" description="SFP 1 monitored event size in 32-bit word. 0 if no data available" parameters="status=9" mask="0x0001ffff"/>
+      </node>
+      <node id="SERIAL_NO" address="0x0" permission="r" description="bit 31-24 T1 board SN" parameters="status=9" mask="0xff000000"/>
+      <node id="SFP">
+         <node id="ANY_DOWN" address="0x0" permission="r" description="reads 1 when any of the enabled SFP ports is down" parameters="status=2;show=nz" mask="0x00000001"/>
+         <node id="RX_SIG_LOST_MASK" address="0x4" permission="r" description="1 indicates SFP0..2 Receiver signal lost" parameters="status=2;show=nz" mask="0x00000070"/>
+         <node id="SFP0">
+            <node id="ACK_COUNT" address="0x80" permission="r" description="SFP0 ack count" parameters="status=2;show=nz"/>
+            <node id="DAQLSC_STATUS_HI" address="0x87" permission="r" description="SFP0 DAQLSC status bit 63-32" parameters="status=2;show=nz"/>
+            <node id="DAQLSC_STATUS_LO" address="0x86" permission="r" description="SFP0 DAQLSC status bit 31-0" parameters="status=2;show=nz"/>
+            <node id="EVT_COUNT" address="0x83" permission="r" description="SFP0 event count" parameters="status=2;show=nz"/>
+            <node id="PACKET_COUNT" address="0x81" permission="r" description="SFP0 packet count" parameters="status=2;show=nz"/>
+            <node id="RETRAN_COUNT" address="0x82" permission="r" description="SFP0 retransmit count" parameters="status=2;show=nz"/>
+            <node id="SYNC_LOST_COUNT" address="0x85" permission="r" description="SFP0 sync loss count" parameters="status=2;show=nz"/>
+         </node>
+         <node id="SFP1">
+            <node id="ACK_COUNT" address="0x88" permission="r" description="SFP1 ack count" parameters="status=2;show=nz"/>
+            <node id="DAQLSC_STATUS_HI" address="0x8f" permission="r" description="SFP1 DAQLSC status bit 63-32" parameters="status=2;show=nz"/>
+            <node id="DAQLSC_STATUS_LO" address="0x8e" permission="r" description="SFP1 DAQLSC status bit 31-0" parameters="status=2;show=nz"/>
+            <node id="EVT_COUNT" address="0x8b" permission="r" description="SFP1 event count" parameters="status=2;show=nz"/>
+            <node id="PACKET_COUNT" address="0x89" permission="r" description="SFP1 packet count" parameters="status=2;show=nz"/>
+            <node id="RETRAN_COUNT" address="0x8a" permission="r" description="SFP1 retransmit count" parameters="status=2;show=nz"/>
+            <node id="SYNC_LOST_COUNT" address="0x8d" permission="r" description="SFP1 sync loss count" parameters="status=2;show=nz"/>
+         </node>
+         <node id="SFP2">
+            <node id="ACK_COUNT" address="0x90" permission="r" description="SFP2 ack count" parameters="status=2;show=nz"/>
+            <node id="DAQLSC_STATUS_HI" address="0x97" permission="r" description="SFP2 DAQLSC status bit 63-32" parameters="status=2;show=nz"/>
+            <node id="DAQLSC_STATUS_LO" address="0x96" permission="r" description="SFP2 DAQLSC status bit 31-0" parameters="status=2;show=nz"/>
+            <node id="EVT_COUNT" address="0x93" permission="r" description="SFP2 event count" parameters="status=2;show=nz"/>
+            <node id="PACKET_COUNT" address="0x91" permission="r" description="SFP2 packet count" parameters="status=2;show=nz"/>
+            <node id="RETRAN_COUNT" address="0x92" permission="r" description="SFP2 retransmit count" parameters="status=2;show=nz"/>
+            <node id="SYNC_LOST_COUNT" address="0x95" permission="r" description="SFP2 sync loss count" parameters="status=2;show=nz"/>
+         </node>
+         <node id="SFP_ABSENT_MASK" address="0x4" permission="r" description="1 indicates SFP0..2 absent" parameters="status=2;show=nz" mask="0x00000007"/>
+         <node id="TTS_LOS_LOL" address="0x4" permission="r" description="1 indicates TTC_LOS or TTC_LOL" parameters="status=1;show=nz" mask="0x00000080"/>
+         <node id="TTS_SFP_ABSENT" address="0x4" permission="r" description="1 indicates TTC/TTS SFP absent" parameters="status=1;show=nz" mask="0x00000008"/>
+         <node id="TTS_TX_FAULT" address="0x4" permission="r" description="1 indicates TTS TxFault" parameters="status=1;show=nz" mask="0x00000800"/>
+         <node id="TX_FAULT_MASK" address="0x4" permission="r" description="1 indicates SFP0..2 TxFault" parameters="status=1;show=nz" mask="0x00000700"/>
+      </node>
+      <node id="SFP0">
+         <node id="ROM" address="0x100" permission="r" description="SFP0 ROM data(first 128 bytes, little endian)"/>
+      </node>
+      <node id="SFP1">
+         <node id="ROM" address="0x120" permission="r" description="SFP1 ROM data(first 128 bytes, little endian)"/>
+      </node>
+      <node id="SFP2">
+         <node id="ROM" address="0x140" permission="r" description="SFP2 ROM data(first 128 bytes, little endian)"/>
+      </node>
+      <node id="SFP_LSC_DOWN_MASK" address="0x3" permission="r" description="1 when DAQLSC of SFP0..2 is down" parameters="status=2;show=nz" mask="0x70000000"/>
+      <node id="T1_TTS_STATE" address="0x19" permission="r" description="Current T1 overall TTS state" parameters="status=1" mask="0x0000f000"/>
+      <node id="TTC">
+         <node id="BCNT_ERROR" address="0x0" permission="r" description="TTC bcnt error" parameters="status=1;show=nz" mask="0x00000040"/>
+         <node id="BCNT_ERRORS_HI" address="0x45" permission="r" description="bit 15-0 TTC BC0 error counter bits[47:32]" parameters="status=1;show=nz" mask="0x0000ffff"/>
+         <node id="BCNT_ERRORS_LO" address="0x44" permission="r" description="TTC BC0 error counter bits[31:0]" parameters="status=1;show=nz"/>
+         <node id="MULT_BIT_ERROR" address="0x0" permission="r" description="TTC multi-bit error" parameters="status=1;show=nz" mask="0x00000100"/>
+         <node id="MULT_BIT_ERRORS_HI" address="0x43" permission="r" description="TTC multi-bit error counter bits[47:32]" parameters="status=1;show=nz" mask="0x0000ffff"/>
+         <node id="MULT_BIT_ERRORS_LO" address="0x42" permission="r" description="TTC multi-bit error counter bits[31:0]" parameters="status=1;show=nz"/>
+         <node id="NOT_READY" address="0x0" permission="r" description="TTC not ready" parameters="status=1;show=nz" mask="0x00000020"/>
+         <node id="ROM" address="0x160" permission="r" description="TTC/TTS SFP ROM data(first 128 bytes, little endian)" parameters="status=1"/>
+         <node id="SGL_BIT_ERROR" address="0x0" permission="r" description="TTC single bit error" parameters="status=1;show=nz" mask="0x00000080"/>
+         <node id="SGL_BIT_ERRORS_HI" address="0x41" permission="r" description="TTC single bit error counter bits[47:32]" parameters="status=1;show=nz" mask="0x0000ffff"/>
+         <node id="SGL_BIT_ERRORS_LO" address="0x40" permission="r" description="TTC single bit error counter bits[31:0]" parameters="status=1;show=nz"/>
+      </node>
+   </node>
+</node>

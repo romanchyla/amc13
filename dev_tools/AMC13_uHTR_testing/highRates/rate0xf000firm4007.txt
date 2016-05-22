@@ -1,0 +1,400 @@
+No address table path specified.
+Setting default AMC13 to 0
+parsed list "1,4,5,6,11,12" as mask 0xc39
+Enabling TTS as TTC for loop-back
+AMC13 out of run mode
+AMC13 is back in run mode and ready
+Setting default AMC13 to 1
+Write to address
+Write to address
+Setting default AMC13 to 2
+Write to address
+Write to address
+Setting default AMC13 to 3
+Write to address
+Write to address
+Setting default AMC13 to 4
+Write to address
+Write to address
+Setting default AMC13 to 5
+Write to address
+Write to address
+Setting default AMC13 to 6
+Write to address
+Write to address
+Setting default AMC13 to 0
+Write to address
+        AMC_Links| AMC01| AMC04| AMC05| AMC06| AMC11| AMC12|
+               --|------|------|------|------|------|------|
+   AMC_LINK_READY|   0x1|   0x1|   0x1|   0x1|   0x1|   0x1|
+      LINK_ENABLE|   0x1|   0x1|   0x1|   0x1|   0x1|   0x1|
+  LINK_VERS_WRONG|   0x1|   0x1|   0x1|   0x1|   0x1|   0x1|
+     LOSS_OF_SYNC|   0x1|   0x1|   0x1|   0x1|   0x1|   0x1|
+
+          Actions| CONTINUOUS| COUNTER| EVN| GENERAL| NEXT_PAGE| ORN| SDRAM| SEND_BCR| SEND_BURST| SEND_ECR|
+               --|-----------|--------|----|--------|----------|----|------|---------|-----------|---------|
+    LOCAL_TRIGGER|        0x0|        |    |        |          |    |      |      0x0|        0x0|      0x0|
+   MONITOR_BUFFER|           |        |    |        |       0x0|    |      |         |           |         |
+           RESETS|           |     0x0| 0x0|     0x0|          | 0x0|   0x0|         |           |         |
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+           Config| BC0_OFFSET| BC0_ONCE| DISABLETTS| DISABLETX| ENABLE| ENABLE_MASK| EVTSTAT| EVTTYP| FAKE_SIZE| FED| LOWER_BX| ORN_OFFSET| SRCID| TESTPATT| TRIGGER_MASK| TTS_DISABLE| UPPER_BX|
+               --|-----------|---------|-----------|----------|-------|------------|--------|-------|----------|----|---------|-----------|------|---------|-------------|------------|---------|
+        AMC_LINKS|        0x0|         |           |          |       |         0x0|        |       |       0x0|    |         |           |      |         |             |            |         |
+       CALIB_TRIG|           |         |           |          |    0x0|            |        |       |          |    |      0x0|           |      |         |             |            |      0x0|
+          GENERAL|        0x0|      0x0|           |          |       |            |        |       |          |    |         |        0x0|      |         |             |            |         |
+     HCAL_TRIGGER|           |         |           |          |       |            |        |       |          |    |         |           |      |         |          0x0|         0x0|         |
+           OUTPUT|           |         |           |          |       |            |     0x0|    0x0|          | 0x0|         |           |   0x0|         |             |            |         |
+              SFP|           |         |        0x0|       0x0|    0x0|            |        |       |          |    |         |           |      |         |             |            |         |
+              TTS|           |         |           |          |       |            |        |       |          |    |         |           |      |      0x0|             |            |         |
+
+          Control| BURSTN| DAQ| ENAMASKEDEVN| FAKE| LTRIG| MODE| PRESCALE| RATE| RULES| RUN| SELMASKEDEVN| TTCLOOP|
+               --|-------|----|-------------|-----|------|-----|---------|-----|------|----|-------------|--------|
+    LOCAL_TRIGGER|    0x0|    |             |     |      |  0x0|         |  0x0|   0x0|    |             |        |
+            REG_1|       | 0x0|          0x0|  0x0|   0x1|     |         |     |      | 0x1|             |     0x1|
+            REG_2|       |    |             |     |      |     |      0x0|     |      |    |          0x0|        |
+
+    Event_Builder| COUNT|
+               --|------|
+              L1A|   0x0|
+
+ HCAL_Trigger_Diagnostics| VALUE|
+                       --|------|
+                CATCH_BC0|   0x0|
+                PRBS_MODE|   0x0|
+            SAMPLE_INPUTS|   0x0|
+
+     State_Timers|      COUNT|
+               --|-----------|
+             BUSY| 0x00000001|
+ OVERFLOW_WARNING| 0x00000001|
+            READY| 0x24006F11|
+              RUN| 0x24006F0F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x8|
+
+Enable continuous local triggers
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x0012| 0x0014| 0x0010| 0x0012| 0x000F| 0x0016|
+ AMC13_ORN_MISMATCH| 0x001C| 0x0015| 0x0029| 0x001E| 0x0029| 0x001D|
+         AMC_EVENTS| 0x2591| 0x259A| 0x259B| 0x25A4| 0x25AE| 0x25AE|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0012| 0x000C| 0x0018| 0x0010| 0x001A| 0x0013|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+          Actions| CONTINUOUS| COUNTER| EVN| GENERAL| NEXT_PAGE| ORN| SDRAM| SEND_BCR| SEND_BURST| SEND_ECR|
+               --|-----------|--------|----|--------|----------|----|------|---------|-----------|---------|
+    LOCAL_TRIGGER|        0x0|        |    |        |          |    |      |      0x0|        0x0|      0x0|
+   MONITOR_BUFFER|           |        |    |        |       0x0|    |      |         |           |         |
+           RESETS|           |     0x0| 0x0|     0x0|          | 0x0|   0x0|         |           |         |
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+           Config| BC0_OFFSET| BC0_ONCE| DISABLETTS| DISABLETX| ENABLE| ENABLE_MASK| EVTSTAT| EVTTYP| FAKE_SIZE| FED| LOWER_BX| ORN_OFFSET| SRCID| TESTPATT| TRIGGER_MASK| TTS_DISABLE| UPPER_BX|
+               --|-----------|---------|-----------|----------|-------|------------|--------|-------|----------|----|---------|-----------|------|---------|-------------|------------|---------|
+        AMC_LINKS|        0x0|         |           |          |       |         0x0|        |       |       0x0|    |         |           |      |         |             |            |         |
+       CALIB_TRIG|           |         |           |          |    0x0|            |        |       |          |    |      0x0|           |      |         |             |            |      0x0|
+          GENERAL|        0x0|      0x0|           |          |       |            |        |       |          |    |         |        0x0|      |         |             |            |         |
+     HCAL_TRIGGER|           |         |           |          |       |            |        |       |          |    |         |           |      |         |          0x0|         0x0|         |
+           OUTPUT|           |         |           |          |       |            |     0x0|    0x0|          | 0x0|         |           |   0x0|         |             |            |         |
+              SFP|           |         |        0x0|       0x0|    0x0|            |        |       |          |    |         |           |      |         |             |            |         |
+              TTS|           |         |           |          |       |            |        |       |          |    |         |           |      |      0x0|             |            |         |
+
+          Control| BURSTN| DAQ| ENAMASKEDEVN| FAKE| LTRIG| MODE| PRESCALE| RATE| RULES| RUN| SELMASKEDEVN| TTCLOOP|
+               --|-------|----|-------------|-----|------|-----|---------|-----|------|----|-------------|--------|
+    LOCAL_TRIGGER|    0x0|    |             |     |      |  0x0|         |  0x0|   0x0|    |             |        |
+            REG_1|       | 0x0|          0x0|  0x0|   0x1|     |         |     |      | 0x1|             |     0x1|
+            REG_2|       |    |             |     |      |     |      0x0|     |      |    |          0x0|        |
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x25CD|           |        |
+             SFP0|       | 0x6BA0B85D| 0x1EEB8|
+
+ HCAL_Trigger_Diagnostics| VALUE|
+                       --|------|
+                CATCH_BC0|   0x0|
+                PRBS_MODE|   0x0|
+            SAMPLE_INPUTS|   0x0|
+
+   Monitor_Buffer| COUNT|   V|
+               --|------|----|
+ OVERFLOW_WARNING|      | 0x1|
+       UNREAD_EVT| 0x3FF|    |
+
+     State_Timers|      COUNT|
+               --|-----------|
+             BUSY| 0x00000001|
+ OVERFLOW_WARNING| 0x3EFF0D44|
+            READY| 0x5CE0FECE|
+              RUN| 0x9BE00C0F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x1|
+
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x0020| 0x0029| 0x0026| 0x0023| 0x0021| 0x0027|
+ AMC13_ORN_MISMATCH| 0x003B| 0x0037| 0x0050| 0x003A| 0x0041| 0x0037|
+         AMC_EVENTS| 0x4B52| 0x4B5B| 0x4B5B| 0x4B65| 0x4B70| 0x4B6F|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0023| 0x0020| 0x002D| 0x001F| 0x0028| 0x0025|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+          Actions| CONTINUOUS| COUNTER| EVN| GENERAL| NEXT_PAGE| ORN| SDRAM| SEND_BCR| SEND_BURST| SEND_ECR|
+               --|-----------|--------|----|--------|----------|----|------|---------|-----------|---------|
+    LOCAL_TRIGGER|        0x0|        |    |        |          |    |      |      0x0|        0x0|      0x0|
+   MONITOR_BUFFER|           |        |    |        |       0x0|    |      |         |           |         |
+           RESETS|           |     0x0| 0x0|     0x0|          | 0x0|   0x0|         |           |         |
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+           Config| BC0_OFFSET| BC0_ONCE| DISABLETTS| DISABLETX| ENABLE| ENABLE_MASK| EVTSTAT| EVTTYP| FAKE_SIZE| FED| LOWER_BX| ORN_OFFSET| SRCID| TESTPATT| TRIGGER_MASK| TTS_DISABLE| UPPER_BX|
+               --|-----------|---------|-----------|----------|-------|------------|--------|-------|----------|----|---------|-----------|------|---------|-------------|------------|---------|
+        AMC_LINKS|        0x0|         |           |          |       |         0x0|        |       |       0x0|    |         |           |      |         |             |            |         |
+       CALIB_TRIG|           |         |           |          |    0x0|            |        |       |          |    |      0x0|           |      |         |             |            |      0x0|
+          GENERAL|        0x0|      0x0|           |          |       |            |        |       |          |    |         |        0x0|      |         |             |            |         |
+     HCAL_TRIGGER|           |         |           |          |       |            |        |       |          |    |         |           |      |         |          0x0|         0x0|         |
+           OUTPUT|           |         |           |          |       |            |     0x0|    0x0|          | 0x0|         |           |   0x0|         |             |            |         |
+              SFP|           |         |        0x0|       0x0|    0x0|            |        |       |          |    |         |           |      |         |             |            |         |
+              TTS|           |         |           |          |       |            |        |       |          |    |         |           |      |      0x0|             |            |         |
+
+          Control| BURSTN| DAQ| ENAMASKEDEVN| FAKE| LTRIG| MODE| PRESCALE| RATE| RULES| RUN| SELMASKEDEVN| TTCLOOP|
+               --|-------|----|-------------|-----|------|-----|---------|-----|------|----|-------------|--------|
+    LOCAL_TRIGGER|    0x0|    |             |     |      |  0x0|         |  0x0|   0x0|    |             |        |
+            REG_1|       | 0x0|          0x0|  0x0|   0x1|     |         |     |      | 0x1|             |     0x1|
+            REG_2|       |    |             |     |      |     |      0x0|     |      |    |          0x0|        |
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x4B9B|           |        |
+             SFP0|       | 0xD7AC6329| 0x3DF5B|
+
+ HCAL_Trigger_Diagnostics| VALUE|
+                       --|------|
+                CATCH_BC0|   0x0|
+                PRBS_MODE|   0x0|
+            SAMPLE_INPUTS|   0x0|
+
+   Monitor_Buffer| COUNT|   V|
+               --|------|----|
+ OVERFLOW_WARNING|      | 0x1|
+       UNREAD_EVT| 0x3FF|    |
+
+     State_Timers|       COUNT|
+               --|------------|
+             BUSY| 0x000000001|
+ OVERFLOW_WARNING| 0x07A48E09C|
+            READY| 0x0997845F6|
+              RUN| 0x113C1268F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x1|
+
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x003C| 0x0039| 0x0034| 0x003D| 0x0032| 0x003C|
+ AMC13_ORN_MISMATCH| 0x0059| 0x0059| 0x006C| 0x0065| 0x0059| 0x0053|
+         AMC_EVENTS| 0x7116| 0x7121| 0x7120| 0x712C| 0x7135| 0x7135|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0034| 0x0034| 0x003F| 0x0037| 0x0039| 0x0036|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+          Actions| CONTINUOUS| COUNTER| EVN| GENERAL| NEXT_PAGE| ORN| SDRAM| SEND_BCR| SEND_BURST| SEND_ECR|
+               --|-----------|--------|----|--------|----------|----|------|---------|-----------|---------|
+    LOCAL_TRIGGER|        0x0|        |    |        |          |    |      |      0x0|        0x0|      0x0|
+   MONITOR_BUFFER|           |        |    |        |       0x0|    |      |         |           |         |
+           RESETS|           |     0x0| 0x0|     0x0|          | 0x0|   0x0|         |           |         |
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+           Config| BC0_OFFSET| BC0_ONCE| DISABLETTS| DISABLETX| ENABLE| ENABLE_MASK| EVTSTAT| EVTTYP| FAKE_SIZE| FED| LOWER_BX| ORN_OFFSET| SRCID| TESTPATT| TRIGGER_MASK| TTS_DISABLE| UPPER_BX|
+               --|-----------|---------|-----------|----------|-------|------------|--------|-------|----------|----|---------|-----------|------|---------|-------------|------------|---------|
+        AMC_LINKS|        0x0|         |           |          |       |         0x0|        |       |       0x0|    |         |           |      |         |             |            |         |
+       CALIB_TRIG|           |         |           |          |    0x0|            |        |       |          |    |      0x0|           |      |         |             |            |      0x0|
+          GENERAL|        0x0|      0x0|           |          |       |            |        |       |          |    |         |        0x0|      |         |             |            |         |
+     HCAL_TRIGGER|           |         |           |          |       |            |        |       |          |    |         |           |      |         |          0x0|         0x0|         |
+           OUTPUT|           |         |           |          |       |            |     0x0|    0x0|          | 0x0|         |           |   0x0|         |             |            |         |
+              SFP|           |         |        0x0|       0x0|    0x0|            |        |       |          |    |         |           |      |         |             |            |         |
+              TTS|           |         |           |          |       |            |        |       |          |    |         |           |      |      0x0|             |            |         |
+
+          Control| BURSTN| DAQ| ENAMASKEDEVN| FAKE| LTRIG| MODE| PRESCALE| RATE| RULES| RUN| SELMASKEDEVN| TTCLOOP|
+               --|-------|----|-------------|-----|------|-----|---------|-----|------|----|-------------|--------|
+    LOCAL_TRIGGER|    0x0|    |             |     |      |  0x0|         |  0x0|   0x0|    |             |        |
+            REG_1|       | 0x0|          0x0|  0x0|   0x1|     |         |     |      | 0x1|             |     0x1|
+            REG_2|       |    |             |     |      |     |      0x0|     |      |    |          0x0|        |
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x7166|           |        |
+             SFP0|       | 0x43D2B436| 0x5D027|
+
+ HCAL_Trigger_Diagnostics| VALUE|
+                       --|------|
+                CATCH_BC0|   0x0|
+                PRBS_MODE|   0x0|
+            SAMPLE_INPUTS|   0x0|
+
+   Monitor_Buffer| COUNT|   V|
+               --|------|----|
+ OVERFLOW_WARNING|      | 0x1|
+       UNREAD_EVT| 0x3FF|    |
+
+     State_Timers|       COUNT|
+               --|------------|
+             BUSY| 0x000000001|
+ OVERFLOW_WARNING| 0x0B8D6F043|
+            READY| 0x0D2CBADDB|
+              RUN| 0x18BA29D8F|
+
+           TTC_Rx| ENC| OFW| RAW|
+               --|----|----|----|
+            STATE| 0x0| 0x1| 0x1|
+
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x004B| 0x004F| 0x0046| 0x004F| 0x0047| 0x0052|
+ AMC13_ORN_MISMATCH| 0x0077| 0x0080| 0x0083| 0x0080| 0x007E| 0x0075|
+         AMC_EVENTS| 0x96E1| 0x96EC| 0x96EC| 0x96F6| 0x9700| 0x9701|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0046| 0x004A| 0x004C| 0x0047| 0x004D| 0x0049|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+          Actions| CONTINUOUS| COUNTER| EVN| GENERAL| NEXT_PAGE| ORN| SDRAM| SEND_BCR| SEND_BURST| SEND_ECR|
+               --|-----------|--------|----|--------|----------|----|------|---------|-----------|---------|
+    LOCAL_TRIGGER|        0x0|        |    |        |          |    |      |      0x0|        0x0|      0x0|
+   MONITOR_BUFFER|           |        |    |        |       0x0|    |      |         |           |         |
+           RESETS|           |     0x0| 0x0|     0x0|          | 0x0|   0x0|         |           |         |
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+           Config| BC0_OFFSET| BC0_ONCE| DISABLETTS| DISABLETX| ENABLE| ENABLE_MASK| EVTSTAT| EVTTYP| FAKE_SIZE| FED| LOWER_BX| ORN_OFFSET| SRCID| TESTPATT| TRIGGER_MASK| TTS_DISABLE| UPPER_BX|
+               --|-----------|---------|-----------|----------|-------|------------|--------|-------|----------|----|---------|-----------|------|---------|-------------|------------|---------|
+        AMC_LINKS|        0x0|         |           |          |       |         0x0|        |       |       0x0|    |         |           |      |         |             |            |         |
+       CALIB_TRIG|           |         |           |          |    0x0|            |        |       |          |    |      0x0|           |      |         |             |            |      0x0|
+          GENERAL|        0x0|      0x0|           |          |       |            |        |       |          |    |         |        0x0|      |         |             |            |         |
+     HCAL_TRIGGER|           |         |           |          |       |            |        |       |          |    |         |           |      |         |          0x0|         0x0|         |
+           OUTPUT|           |         |           |          |       |            |     0x0|    0x0|          | 0x0|         |           |   0x0|         |             |            |         |
+              SFP|           |         |        0x0|       0x0|    0x0|            |        |       |          |    |         |           |      |         |             |            |         |
+              TTS|           |         |           |          |       |            |        |       |          |    |         |           |      |      0x0|             |            |         |
+
+          Control| BURSTN| DAQ| ENAMASKEDEVN| FAKE| LTRIG| MODE| PRESCALE| RATE| RULES| RUN| SELMASKEDEVN| TTCLOOP|
+               --|-------|----|-------------|-----|------|-----|---------|-----|------|----|-------------|--------|
+    LOCAL_TRIGGER|    0x0|    |             |     |      |  0x0|         |  0x0|   0x0|    |             |        |
+            REG_1|       | 0x0|          0x0|  0x0|   0x1|     |         |     |      | 0x1|             |     0x1|
+            REG_2|       |    |             |     |      |     |      0x0|     |      |    |          0x0|        |
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x9723|           |        |
+             SFP0|       | 0xAFE9853B| 0x7C1A1|
+
+ HCAL_Trigger_Diagnostics| VALUE|
+                       --|------|
+                CATCH_BC0|   0x0|
+                PRBS_MODE|   0x0|
+            SAMPLE_INPUTS|   0x0|
+
+   Monitor_Buffer| COUNT|
+               --|------|
+       UNREAD_EVT| 0x3FF|
+
+     State_Timers|       COUNT|
+               --|------------|
+             BUSY| 0x000000001|
+ OVERFLOW_WARNING| 0x0F73FE41A|
+            READY| 0x10C5F9478|
+              RUN| 0x2039F780F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x1|
+
+Disable continuous local triggers
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x004B| 0x004F| 0x0047| 0x004F| 0x0047| 0x0052|
+ AMC13_ORN_MISMATCH| 0x0077| 0x0082| 0x0083| 0x0080| 0x007E| 0x0075|
+         AMC_EVENTS| 0x9744| 0x9744| 0x9744| 0x9744| 0x9744| 0x9744|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0046| 0x004B| 0x004C| 0x0047| 0x004D| 0x0049|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+          Actions| CONTINUOUS| COUNTER| EVN| GENERAL| NEXT_PAGE| ORN| SDRAM| SEND_BCR| SEND_BURST| SEND_ECR|
+               --|-----------|--------|----|--------|----------|----|------|---------|-----------|---------|
+    LOCAL_TRIGGER|        0x0|        |    |        |          |    |      |      0x0|        0x0|      0x0|
+   MONITOR_BUFFER|           |        |    |        |       0x0|    |      |         |           |         |
+           RESETS|           |     0x0| 0x0|     0x0|          | 0x0|   0x0|         |           |         |
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+           Config| BC0_OFFSET| BC0_ONCE| DISABLETTS| DISABLETX| ENABLE| ENABLE_MASK| EVTSTAT| EVTTYP| FAKE_SIZE| FED| LOWER_BX| ORN_OFFSET| SRCID| TESTPATT| TRIGGER_MASK| TTS_DISABLE| UPPER_BX|
+               --|-----------|---------|-----------|----------|-------|------------|--------|-------|----------|----|---------|-----------|------|---------|-------------|------------|---------|
+        AMC_LINKS|        0x0|         |           |          |       |         0x0|        |       |       0x0|    |         |           |      |         |             |            |         |
+       CALIB_TRIG|           |         |           |          |    0x0|            |        |       |          |    |      0x0|           |      |         |             |            |      0x0|
+          GENERAL|        0x0|      0x0|           |          |       |            |        |       |          |    |         |        0x0|      |         |             |            |         |
+     HCAL_TRIGGER|           |         |           |          |       |            |        |       |          |    |         |           |      |         |          0x0|         0x0|         |
+           OUTPUT|           |         |           |          |       |            |     0x0|    0x0|          | 0x0|         |           |   0x0|         |             |            |         |
+              SFP|           |         |        0x0|       0x0|    0x0|            |        |       |          |    |         |           |      |         |             |            |         |
+              TTS|           |         |           |          |       |            |        |       |          |    |         |           |      |      0x0|             |            |         |
+
+          Control| BURSTN| DAQ| ENAMASKEDEVN| FAKE| LTRIG| MODE| PRESCALE| RATE| RULES| RUN| SELMASKEDEVN| TTCLOOP|
+               --|-------|----|-------------|-----|------|-----|---------|-----|------|----|-------------|--------|
+    LOCAL_TRIGGER|    0x0|    |             |     |      |  0x0|         |  0x0|   0x0|    |             |        |
+            REG_1|       | 0x0|          0x0|  0x0|   0x1|     |         |     |      | 0x1|             |     0x1|
+            REG_2|       |    |             |     |      |     |      0x0|     |      |    |          0x0|        |
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x9744|           |        |
+             SFP0|       | 0xB1029D54| 0x7C6AC|
+
+ HCAL_Trigger_Diagnostics| VALUE|
+                       --|------|
+                CATCH_BC0|   0x0|
+                PRBS_MODE|   0x0|
+            SAMPLE_INPUTS|   0x0|
+
+   Monitor_Buffer| COUNT|
+               --|------|
+       UNREAD_EVT| 0x3FF|
+
+     State_Timers|       COUNT|
+               --|------------|
+             BUSY| 0x000000001|
+ OVERFLOW_WARNING| 0x0F7A5BEEE|
+            READY| 0x1306A0824|
+              RUN| 0x2280FC70F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x8|
+

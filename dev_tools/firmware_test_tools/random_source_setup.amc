@@ -1,0 +1,15 @@
+#
+# set up 1000 series firmware for random high rate
+#
+# set random size limits
+wv 0x18 0x100
+wv 0x19 0x8000
+# wv 0x19 0x100
+# enable HCAL trigger mode
+# wv 0x17 0x80000000
+# -or- disable
+wv 0x17 0
+# set random seed
+wv 0x1a 0x1111
+rg
+q

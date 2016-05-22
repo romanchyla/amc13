@@ -1,0 +1,261 @@
+No address table path specified.
+Setting default AMC13 to 0
+parsed list "1,4,5,6,11,12" as mask 0xc39
+Enabling TTS as TTC for loop-back
+AMC13 out of run mode
+AMC13 is back in run mode and ready
+Configure LocalL1A enabled mode=2 burst=1 rate=1000 rules=0
+Setting default AMC13 to 1
+Write to address 0X18
+Write to address 0
+Setting default AMC13 to 2
+Write to address 0X18
+Write to address 0
+Setting default AMC13 to 3
+Write to address 0X18
+Write to address 0
+Setting default AMC13 to 4
+Write to address 0X18
+Write to address 0
+Setting default AMC13 to 5
+Write to address 0X18
+Write to address 0
+Setting default AMC13 to 6
+Write to address 0X18
+Write to address 0
+Setting default AMC13 to 0
+Write to address 0
+        AMC_Links| AMC01| AMC04| AMC05| AMC06| AMC11| AMC12|
+               --|------|------|------|------|------|------|
+   AMC_LINK_READY|   0x1|   0x1|   0x1|   0x1|   0x1|   0x1|
+      LINK_ENABLE|   0x1|   0x1|   0x1|   0x1|   0x1|   0x1|
+  LINK_VERS_WRONG|   0x1|   0x1|   0x1|   0x1|   0x1|   0x1|
+     LOSS_OF_SYNC|   0x1|   0x1|   0x1|   0x1|   0x1|   0x1|
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+          Control| DAQ| FAKE| LTRIG| RUN| TTCLOOP|
+               --|----|-----|------|----|--------|
+            REG_1| 0x0|  0x0|   0x1| 0x1|     0x1|
+
+    Event_Builder| COUNT|
+               --|------|
+              L1A|   0x0|
+
+   Monitor_Buffer|   V|
+               --|----|
+             FULL| 0x1|
+
+     State_Timers|      COUNT|
+               --|-----------|
+             BUSY| 0x00000001|
+ OVERFLOW_WARNING| 0x00000001|
+            READY| 0x23FED411|
+              RUN| 0x23FED40F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x8|
+
+Enable continuous local triggers
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x0013| 0x0015| 0x0014| 0x0027| 0x000F| 0x0017|
+ AMC13_ORN_MISMATCH| 0x001C| 0x001C| 0x001B| 0x0016| 0x0024| 0x0023|
+         AMC_EVENTS| 0x25CB| 0x25D4| 0x25D4| 0x25DF| 0x25EA| 0x25EF|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x000F| 0x0010| 0x0010| 0x000D| 0x0015| 0x0015|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+          Control| DAQ| FAKE| LTRIG| RUN| TTCLOOP|
+               --|----|-----|------|----|--------|
+            REG_1| 0x0|  0x0|   0x1| 0x1|     0x1|
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x2614|           |        |
+             SFP0|       | 0x6BB7B8C6| 0x1EE9E|
+
+   Monitor_Buffer|   V|
+               --|----|
+             FULL| 0x1|
+ OVERFLOW_WARNING| 0x1|
+
+     State_Timers|      COUNT|
+               --|-----------|
+             BUSY| 0x00000001|
+ OVERFLOW_WARNING| 0x3E5ABFF4|
+            READY| 0x5D8F0FAA|
+              RUN| 0x9BE9CF0F|
+
+           TTC_Rx| ENC| OFW| RAW|
+               --|----|----|----|
+            STATE| 0x0| 0x1| 0x8|
+
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x0027| 0x0030| 0x002E| 0x0040| 0x002D| 0x002F|
+ AMC13_ORN_MISMATCH| 0x0040| 0x0031| 0x0043| 0x0034| 0x0036| 0x003E|
+         AMC_EVENTS| 0x4B9C| 0x4BA7| 0x4BA6| 0x4BB0| 0x4BBC| 0x4BC0|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0023| 0x001C| 0x0027| 0x001F| 0x001F| 0x0025|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+          Control| DAQ| FAKE| LTRIG| RUN| TTCLOOP|
+               --|----|-----|------|----|--------|
+            REG_1| 0x0|  0x0|   0x1| 0x1|     0x1|
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x4BE0|           |        |
+             SFP0|       | 0xD7BD76BC| 0x3E038|
+
+   Monitor_Buffer|   V|
+               --|----|
+             FULL| 0x1|
+ OVERFLOW_WARNING| 0x1|
+
+     State_Timers|       COUNT|
+               --|------------|
+             BUSY| 0x000000001|
+ OVERFLOW_WARNING| 0x079806AD5|
+            READY| 0x09A558249|
+              RUN| 0x113D5EC8F|
+
+           TTC_Rx| ENC| OFW| RAW|
+               --|----|----|----|
+            STATE| 0x0| 0x1| 0x8|
+
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x0036| 0x0049| 0x0048| 0x0055| 0x003C| 0x0040|
+ AMC13_ORN_MISMATCH| 0x005B| 0x005C| 0x005A| 0x0051| 0x0056| 0x005A|
+         AMC_EVENTS| 0x7154| 0x715E| 0x715E| 0x7168| 0x7174| 0x7177|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0032| 0x0034| 0x0035| 0x002F| 0x0030| 0x0034|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+          Control| DAQ| FAKE| LTRIG| RUN| TTCLOOP|
+               --|----|-----|------|----|--------|
+            REG_1| 0x0|  0x0|   0x1| 0x1|     0x1|
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x7192|           |        |
+             SFP0|       | 0x43E38A01| 0x5D075|
+
+   Monitor_Buffer|   V|
+               --|----|
+             FULL| 0x1|
+
+     State_Timers|       COUNT|
+               --|------------|
+             BUSY| 0x000000001|
+ OVERFLOW_WARNING| 0x0B8B81EEA|
+            READY| 0x0D30A23A8|
+              RUN| 0x18BC2420F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x1|
+
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x0043| 0x0060| 0x0055| 0x0069| 0x004C| 0x0052|
+ AMC13_ORN_MISMATCH| 0x007B| 0x0077| 0x0077| 0x0069| 0x0073| 0x007C|
+         AMC_EVENTS| 0x9730| 0x9739| 0x9738| 0x9743| 0x974E| 0x9752|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0046| 0x0043| 0x0047| 0x003D| 0x003F| 0x0047|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+          Control| DAQ| FAKE| LTRIG| RUN| TTCLOOP|
+               --|----|-----|------|----|--------|
+            REG_1| 0x0|  0x0|   0x1| 0x1|     0x1|
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x9772|           |        |
+             SFP0|       | 0xAFFBCC75| 0x7C15E|
+
+   Monitor_Buffer|   V|
+               --|----|
+             FULL| 0x1|
+ OVERFLOW_WARNING| 0x1|
+
+     State_Timers|       COUNT|
+               --|------------|
+             BUSY| 0x000000001|
+ OVERFLOW_WARNING| 0x0F53A33E5|
+            READY| 0x10E74332D|
+              RUN| 0x203AE670F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x1|
+
+Disable continuous local triggers
+          AMC_Links|  AMC01|  AMC04|  AMC05|  AMC06|  AMC11|  AMC12|
+                 --|-------|-------|-------|-------|-------|-------|
+   AMC13_BAD_LENGTH| 0x0045| 0x0060| 0x0055| 0x0069| 0x004C| 0x0052|
+ AMC13_ORN_MISMATCH| 0x007D| 0x0077| 0x0077| 0x006B| 0x0073| 0x007C|
+         AMC_EVENTS| 0x97AF| 0x97AF| 0x97AF| 0x97AF| 0x97AF| 0x97AF|
+     AMC_LINK_READY| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+   AMC_ORN_MISMATCH| 0x0047| 0x0043| 0x0047| 0x003E| 0x003F| 0x0047|
+        LINK_ENABLE| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+    LINK_VERS_WRONG| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+       LOSS_OF_SYNC| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001| 0x0001|
+
+            Board| SERIALNO| T1_VER| T2_REV| T2_SERNO|
+               --|---------|-------|-------|---------|
+             INFO|     0x52| 0x4007|   0x21|     0x52|
+
+          Control| DAQ| FAKE| LTRIG| RUN| TTCLOOP|
+               --|----|-----|------|----|--------|
+            REG_1| 0x0|  0x0|   0x1| 0x1|     0x1|
+
+    Event_Builder|  COUNT|     EVENTS|   WORDS|
+               --|-------|-----------|--------|
+              L1A| 0x97AF|           |        |
+             SFP0|       | 0xB16F72F0| 0x7C7F6|
+
+   Monitor_Buffer|   V|
+               --|----|
+             FULL| 0x1|
+
+     State_Timers|       COUNT|
+               --|------------|
+             BUSY| 0x000000001|
+ OVERFLOW_WARNING| 0x0F5AC472E|
+            READY| 0x1327DED64|
+              RUN| 0x2282A348F|
+
+           TTC_Rx| ENC| RAW|
+               --|----|----|
+            STATE| 0x0| 0x8|
+

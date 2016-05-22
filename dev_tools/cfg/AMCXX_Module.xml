@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- AMCXX Module -->
+
+<!-- AMCXX  -->
+<node id="AMCXX_ACC_CTR_LO" address="0x00" permission="r" description="AMC Accept Counter" tags="AMCXX_ACC_CTR_LO"/>
+<node id="AMCXX_ACC_CTR_HI" address="0x01" permission="r" description="" tags="AMCXX_ACC_CTR_HI"/>
+<node id="AMCXX_ACK_CTR_LO" address="0x02" permission="r" description="AMC ACK Counter" tags="AMCXX_ACK_CTR_LO"/>
+<node id="AMCXX_ACK_CTR_HI" address="0x03" permission="r" description="" tags="AMCXX_ACK_CTR_HI"/>
+<node id="AMCXX_L1A_AB_CTR_LO" address="0x04" permission="r" description="AMC L1A Abort Counter" tags="AMCXX_L1A_AB_CTR_LO"/>
+<node id="AMCXX_L1A_AB_CTR_HI" address="0x05" permission="r" description="" tags="AMCXX_L1A_AB_CTR_HI"/>
+<node id="AMCXX_EVN_MM_CTR_LO" address="0x06" permission="r" description="AMC EVN Mismatch Counter" tags="AMCXX_EVN_MM_CTR_LO"/>
+<node id="AMCXX_EVN_MM_CTR_HI" address="0x07" permission="r" description="" tags="AMCXX_EVN_MM_CTR_HI"/>
+<node id="AMCXX_ORN_MM_CTR_LO" address="0x08" permission="r" description="AMC ORN Mismatch Counter" tags="AMCXX_ORN_MM_CTR_LO"/>
+<node id="AMCXX_ORN_MM_CTR_HI" address="0x09" permission="r" description="" tags="AMCXX_ORN_MM_CTR_HI"/>
+<node id="AMCXX_BCN_MM_CTR_LO" address="0x0a" permission="r" description="AMC BCN Mismatch Counter" tags="AMCXX_BCN_MM_CTR_LO"/>
+<node id="AMCXX_BCN_MM_CTR_HI" address="0x0b" permission="r" description="" tags="AMCXX_BCN_MM_CTR_HI"/>
+<node id="AMCXX_RCVE_EV_CTR_LO" address="0x0c" permission="r" description="AMC Received Ev Counter" tags="AMCXX_RCVE_EV_CTR_LO"/>
+<node id="AMCXX_RCVE_EV_CTR_HI" address="0x0d" permission="r" description="" tags="AMCXX_RCVE_EV_CTR_HI"/>
+<node id="AMCXX_CTR_ACK_CTR_LO" address="0x0e" permission="r" description="AMC Ctr ACK Counter" tags="AMCXX_CTR_ACK_CTR_LO"/>
+<node id="AMCXX_CTR_ACK_CTR_HI" address="0x0f" permission="r" description="" tags="AMCXX_CTR_ACK_CTR_HI"/>
+<node id="AMCXX_RESND_CTR_LO" address="0x10" permission="r" description="AMC Resend Counter	" tags="AMCXX_RESND_CTR_LO"/>
+<node id="AMCXX_RESND_CTR_HI" address="0x11" permission="r" description="" tags="AMCXX_RESND_CTR_HI"/>
+<node id="AMCXX_CRC_ERR_CTR_LO" address="0x12" permission="r" description="AMC Ev CRC Error Counter" tags="AMCXX_CRC_ERR_CTR_LO"/>
+<node id="AMCXX_CRC_ERR_CTR_HI" address="0x13" permission="r" description="" tags="AMCXX_CRC_ERR_CTR_HI"/>
+<node id="AMCXX_TR_MM_CTR_LO" address="0x14" permission="r" description="AMC Ev trailer EVN Mismatch Error Counter" tags="AMCXX_TR_MM_CTR_LO"/>
+<node id="AMCXX_TR_MM_CTR_HI" address="0x15" permission="r" description="" tags="AMCXX_TR_MM_CTR_HI"/>
+<node id="AMCXX_EV_BUF_AL_FLL_LO" address="0x16" permission="r" description="AMC Ev Buffer almost full time counter" tags="AMCXX_EV_BUF_AL_FLL_LO"/>
+<node id="AMCXX_EV_BUF_AL_FLL_HI" address="0x17" permission="r" description="" tags="AMCXX_EV_BUF_AL_FLL_HI"/>
+<node id="AMCXX_LNK_WRD_CTR_LO" address="0x18" permission="r" description="Total word at link input counter" tags="AMCXX_LNK_WRD_CTR_LO"/>
+<node id="AMCXX_LNK_WRD_CTR_HI" address="0x19" permission="r" description="" tags="AMCXX_LNK_WRD_CTR_HI"/>
+<node id="AMCXX_LNK_HDR_WRD_CTR_LO" address="0x1a" permission="r" description="Header word at link counter" tags="AMCXX_LNK_HDR_WRD_CTR_LO"/>
+<node id="AMCXX_LNK_HDR_WRD_CTR_HI" address="0x1b" permission="r" description="" tags="AMCXX_LNK_HDR_WRD_CTR_HI"/>
+<node id="AMCXX_LNK_TRL_WRD_CTR_LO" address="0x1c" permission="r" description="Trailer word at link counter" tags="AMCXX_LNK_TRL_WRD_CTR_LO"/>
+<node id="AMCXX_LNK_TRL_WRD_CTR_HI" address="0x1d" permission="r" description="" tags="AMCXX_LNK_TRL_WRD_CTR_HI"/>
+<node id="AMCXX_LNK_EVN_ERR_CTR_LO" address="0x1e" permission="r" description="Event Number Error at link input counter" tags="AMCXX_LNK_EVN_ERR_CTR_LO"/>
+<node id="AMCXX_LNK_EVN_ERR_CTR_HI" address="0x1f" permission="r" description="" tags="AMCXX_LNK_EVN_ERR_CTR_HI"/>
+<node id="AMCXX_DAQ_LNK_ST_CTL_20" address="0x20" permission="r" description="AMC Daq Link statuses Control Register 0x20" tags="AMCXX_DAQ_LNK_ST_CTL_20">
+  <node id="AMCXX_DAQ_LNK_FIFO_OVF" mask="0x8000" permission="r" description="FIFO Overflow" tags="AMCXX_DAQ_LNK_ST_CTL_20"/>
+  <node id="AMCXX_DAQ_LNK_EV_ST_RA" mask="0x1f00" permission="r" description="EventStatus Read Address" tags="AMCXX_DAQ_LNK_ST_CTL_20"/>
+  <node id="AMCXX_DAQ_LNK_EV_ST_WA" mask="0x1f" permission="r" description="EventStatus Write Address" tags="AMCXX_DAQ_LNK_ST_CTL_20"/>
+</node>
+<node id="AMCXX_DAQ_LNK_ST_CTL_22" address="0x22" permission="r" description="AMC Daq Link statuses Control Register 0x22" tags="AMCXX_DAQ_LNK_ST_CTL_22">
+  <node id="AMCXX_DAQ_LNK_DTA_BUF_WA" mask="0x7fff" permission="r" description="DataBuf Write Address" tags="AMCXX_DAQ_LNK_ST_CTL_22"/>
+</node>
+<node id="AMCXX_DAQ_LNK_ST_CTL_24" address="0x24" permission="r" description="AMC Daq Link statuses Control Register 0x24" tags="AMCXX_DAQ_LNK_ST_CTL_24">
+  <node id="AMCXX_DAQ_LNK_DTA_BUF_RA" mask="0x7fff" permission="r" description="DataBuf Read Address" tags="AMCXX_DAQ_LNK_ST_CTL_24"/>
+</node>
+<node id="AMCXX_DAQ_LNK_ST_CTL_26" address="0x26" permission="r" description="AMC Daq Link statuses Control Register 0x26" tags="AMCXX_DAQ_LNK_ST_CTL_26">
+  <node id="AMCXX_DAQ_LNK_L1A_INF_WA" mask="0x3ff" permission="r" description="L1Ainfo Write Address" tags="AMCXX_DAQ_LNK_ST_CTL_26"/>
+</node>
+<node id="AMCXX_DAQ_LNK_ST_CTL_28" address="0x28" permission="r" description="AMC Daq Link statuses Control Register 0x28" tags="AMCXX_DAQ_LNK_ST_CTL_28">
+  <node id="AMCXX_DAQ_LNK_L1A_INF_RA" mask="0x3ff" permission="r" description="L1Ainfo Read Address" tags="AMCXX_DAQ_LNK_ST_CTL_28"/>
+</node>
+<node id="AMCXX_DAQ_LNK_ST_CTL_2A" address="0x2a" permission="r" description="AMC Daq Link statuses Control Register 0x2a" tags="AMCXX_DAQ_LNK_ST_CTL_2A">
+  <node id="AMCXX_DAQ_LNK_HTR_INF_WA" mask="0x3ff" permission="r" description="HTRinfo Write Address" tags="AMCXX_DAQ_LNK_ST_CTL_2A"/>
+</node>
+<node id="AMCXX_DAQ_LNK_ST_CTL_2C" address="0x2c" permission="r" description="AMC Daq Link statuses Control Register 0x2c" tags="AMCXX_DAQ_LNK_ST_CTL_2C">
+  <node id="AMCXX_DAQ_LNK_HTR_INF_RA" mask="0x3ff" permission="r" description="HTRinfo Read Address" tags="AMCXX_DAQ_LNK_ST_CTL_2C"/>
+</node>
+<node id="AMCXX_DAQ_LNK_ST_CTL_2E" address="0x2e" permission="r" description="AMC Daq Link statuses Control Register 0x2e" tags="AMCXX_DAQ_LNK_ST_CTL_2E">
+  <node id="AMCXX_DAQ_LNK_EV_CT" mask="0x1f0" permission="r" description="EventCnt" tags="AMCXX_DAQ_LNK_ST_CTL_2E"/>
+  <node id="AMCXX_DAQ_LNK_RESND_QUE" mask="0xc" permission="r" description="ReSendQue Address" tags="AMCXX_DAQ_LNK_ST_CTL_2E"/>
+  <node id="AMCXX_DAQ_LNK_AL_FULL" mask="0x2" permission="r" description="Almost Full" tags="AMCXX_DAQ_LNK_ST_CTL_2E"/>
+  <node id="AMCXX_DAQ_LNK_DTA_FIFO_E" mask="0x1" permission="r" description="dataFIFO_Empty" tags="AMCXX_DAQ_LNK_ST_CTL_2E"/>
+</node>
+<node id="AMCXX_EVB_TOT_WRD_CTR_LO" address="0x40" permission="r" description="AMC13 Total Word Counter" tags="AMCXX_EVB_TOT_WRD_CTR_LO"/>
+<node id="AMCXX_EVB_TOT_WRD_CTR_HI" address="0x41" permission="r" description="" tags="AMCXX_EVB_TOT_WRD_CTR_HI"/>
+<node id="AMCXX_EVB_SGL_ERR_CTR_LO" address="0x42" permission="r" description="AMC13 Single Bit Error Counter" tags="AMCXX_EVB_SGL_ERR_CTR_LO"/>
+<node id="AMCXX_EVB_SGL_ERR_CTR_HI" address="0x43" permission="r" description="" tags="AMCXX_EVB_SGL_ERR_CTR_HI"/>
+<node id="AMCXX_EVB_MUL_ERR_CTR_LO" address="0x44" permission="r" description="AMC13 Multi Bit Error Counter" tags="AMCXX_EVB_MUL_ERR_CTR_LO"/>
+<node id="AMCXX_EVB_MUL_ERR_CTR_HI" address="0x45" permission="r" description="" tags="AMCXX_EVB_MUL_ERR_CTR_HI"/>
+<node id="AMCXX_EVB_BC0_MM_CTR_LO" address="0x46" permission="r" description="AMC13 BC0 Mismatch Error Counter " tags="AMCXX_EVB_BC0_MM_CTR_LO"/>
+<node id="AMCXX_EVB_BC0_MM_CTR_HI" address="0x47" permission="r" description="" tags="AMCXX_EVB_BC0_MM_CTR_HI"/>
+<node id="AMCXX_EVB_BC_MM_CTR_LO" address="0x48" permission="r" description="AMC13 BCNT Mismatch Error Counter" tags="AMCXX_EVB_BC_MM_CTR_LO"/>
+<node id="AMCXX_EVB_BC_MM_CTR_HI" address="0x49" permission="r" description="" tags="AMCXX_EVB_BC_MM_CTR_HI"/>
+<node id="AMCXX_EVB_RESND_CTR_LO" address="0x4a" permission="r" description="AMC13 Resend Counter" tags="AMCXX_EVB_RESND_CTR_LO"/>
+<node id="AMCXX_EVB_RESND_CTR_HI" address="0x4b" permission="r" description="" tags="AMCXX_EVB_RESND_CTR_HI"/>
+<node id="AMCXX_EVB_ACC_CTR_LO" address="0x4c" permission="r" description="AMC13 Accept Counter" tags="AMCXX_EVB_ACC_CTR_LO"/>
+<node id="AMCXX_EVB_ACC_CTR_HI" address="0x4d" permission="r" description="" tags="AMCXX_EVB_ACC_CTR_HI"/>
+<node id="AMCXX_EVB_CTR_ACC_CTR_LO" address="0x4e" permission="r" description="AMC13 Ctr Accept Counter" tags="AMCXX_EVB_CTR_ACC_CTR_LO"/>
+<node id="AMCXX_EVB_CTR_ACC_CTR_HI" address="0x4f" permission="r" description="" tags="AMCXX_EVB_CTR_ACC_CTR_HI"/>
+<node id="AMCXX_EVB_ACK_CTR_LO" address="0x50" permission="r" description="AMC13 ACK Counter" tags="AMCXX_EVB_ACK_CTR_LO"/>
+<node id="AMCXX_EVB_ACK_CTR_HI" address="0x51" permission="r" description="" tags="AMCXX_EVB_ACK_CTR_HI"/>
+<node id="AMCXX_EVB_RCVE_EV_CTR_LO" address="0x52" permission="r" description="AMC13 Received Event Counter " tags="AMCXX_EVB_RCVE_EV_CTR_LO"/>
+<node id="AMCXX_EVB_RCVE_EV_CTR_HI" address="0x53" permission="r" description="" tags="AMCXX_EVB_RCVE_EV_CTR_HI"/>
+<node id="AMCXX_EVB_RD_EV_CTR_LO" address="0x54" permission="r" description="AMC13 Read Event Counter" tags="AMCXX_EVB_RD_EV_CTR_LO"/>
+<node id="AMCXX_EVB_RD_EV_CTR_HI" address="0x55" permission="r" description="" tags="AMCXX_EVB_RD_EV_CTR_HI"/>
+<node id="AMCXX_DTA_AB_CTR_LO" address="0x56" permission="r" description="Data Abort Counter" tags="AMCXX_DTA_AB_CTR_LO"/>
+<node id="AMCXX_DTA_AB_CTR_HI" address="0x57" permission="r" description="" tags="AMCXX_DTA_AB_CTR_HI"/>
+<node id="AMCXX_CTR_AB_CTR_LO" address="0x58" permission="r" description="Counter Abort Counter" tags="AMCXX_CTR_AB_CTR_LO"/>
+<node id="AMCXX_CTR_AB_CTR_HI" address="0x59" permission="r" description="" tags="AMCXX_CTR_AB_CTR_HI"/>
+<node id="AMCXX_ACK_AB_CTR_LO" address="0x5a" permission="r" description="Abort due to ACKNUM_full " tags="AMCXX_ACK_AB_CTR_LO"/>
+<node id="AMCXX_ACK_AB_CTR_HI" address="0x5b" permission="r" description="" tags="AMCXX_ACK_AB_CTR_HI"/>
+<node id="AMCXX_EVB_AB_CTR_LO" address="0x5c" permission="r" description="Abort due to EventBuf_full" tags="AMCXX_EVB_AB_CTR_LO"/>
+<node id="AMCXX_EVB_AB_CTR_HI" address="0x5d" permission="r" description="" tags="AMCXX_EVB_AB_CTR_HI"/>
+<node id="AMCXX_EVI_AB_CTR_LO" address="0x5e" permission="r" description="Abort due to EventInfo_full" tags="AMCXX_EVI_AB_CTR_LO"/>
+<node id="AMCXX_EVI_AB_CTR_HI" address="0x5f" permission="r" description="" tags="AMCXX_EVI_AB_CTR_HI"/>
+<node id="AMCXX_SEQ_AB_CTR_LO" address="0x60" permission="r" description="Abort due to bad SEQ" tags="AMCXX_SEQ_AB_CTR_LO"/>
+<node id="AMCXX_SEQ_AB_CTR_HI" address="0x61" permission="r" description="" tags="AMCXX_SEQ_AB_CTR_HI"/>
+<node id="AMCXX_CRC_AB_CTR_LO" address="0x62" permission="r" description="Abort due to bad CRC" tags="AMCXX_CRC_AB_CTR_LO"/>
+<node id="AMCXX_CRC_AB_CTR_HI" address="0x63" permission="r" description="" tags="AMCXX_CRC_AB_CTR_HI"/>
+<node id="AMCXX_FRM_AB_CTR_LO" address="0x64" permission="r" description="Abort due to bad frame" tags="AMCXX_FRM_AB_CTR_LO"/>
+<node id="AMCXX_FRM_AB_CTR_HI" address="0x65" permission="r" description="" tags="AMCXX_FRM_AB_CTR_HI"/>
+<node id="AMCXX_K_AB_CTR_LO" address="0x66" permission="r" description="Abort due to bad K character" tags="AMCXX_K_AB_CTR_LO"/>
+<node id="AMCXX_K_AB_CTR_HI" address="0x67" permission="r" description="" tags="AMCXX_K_AB_CTR_HI"/>
+<node id="AMCXX_BUSY_TIME_LO" address="0x68" permission="r" description="BUSY time" tags="AMCXX_BUSY_TIME_LO"/>
+<node id="AMCXX_BUSY_TIME_HI" address="0x69" permission="r" description="" tags="AMCXX_BUSY_TIME_HI"/>
+<node id="AMCXX_HTR_EVN_MM_CTR_LO" address="0x6a" permission="r" description="HTR Event EvN Mismatch Counter" tags="AMCXX_HTR_EVN_MM_CTR_LO"/>
+<node id="AMCXX_HTR_EVN_MM_CTR_HI" address="0x6b" permission="r" description="" tags="AMCXX_HTR_EVN_MM_CTR_HI"/>
+<node id="AMCXX_HTR_BCN_MM_CTR_LO" address="0x6c" permission="r" description="BCN Event BcN Mismatch Counter" tags="AMCXX_HTR_BCN_MM_CTR_LO"/>
+<node id="AMCXX_HTR_BCN_MM_CTR_HI" address="0x6d" permission="r" description="" tags="AMCXX_HTR_BCN_MM_CTR_HI"/>
+<node id="AMCXX_HTR_ORN_MM_CTR_LO" address="0x6e" permission="r" description="ORN Event OrN Mismatch Counter" tags="AMCXX_HTR_ORN_MM_CTR_LO"/>
+<node id="AMCXX_HTR_ORN_MM_CTR_HI" address="0x6f" permission="r" description="" tags="AMCXX_HTR_ORN_MM_CTR_HI"/>
+<node id="AMCXX_HTR_LNK_ST_CTL_70" address="0x70" permission="r" description="AMC HTR Link Statuses Control 70" tags="AMCXX_HTR_LNK_ST_CTL_70">
+  <node id="AMCXX_HTR_LNK_EV_BUF_OFL" mask="0x8000" permission="r" description="EventBuf_ovf_flag" tags="AMCXX_HTR_LNK_ST_CTL_70"/>
+  <node id="AMCXX_HTR_LNK_EV_BUF_WA" mask="0x3fff" permission="r" description="EventBuf Write Address" tags="AMCXX_HTR_LNK_ST_CTL_70"/>
+</node>
+<node id="AMCXX_HTR_LNK_ST_CTL_72" address="0x72" permission="r" description="AMC HTR Link Statuses Control 72" tags="AMCXX_HTR_LNK_ST_CTL_72">
+  <node id="AMCXX_HTR_LNK_EV_BUF_RA" mask="0x3ffc" permission="r" description="EventBuf Read Address" tags="AMCXX_HTR_LNK_ST_CTL_72"/>
+</node>
+<node id="AMCXX_HTR_LNK_ST_CTL_74" address="0x74" permission="r" description="AMC HTR Link Statuses Control 74" tags="AMCXX_HTR_LNK_ST_CTL_74">
+  <node id="AMCXX_HTR_LNK_EV_BUF_RAP" mask="0x3ff0" permission="r" description="EventBuf_rap" tags="AMCXX_HTR_LNK_ST_CTL_74"/>
+</node>
+<node id="AMCXX_HTR_LNK_ST_CTL_76" address="0x76" permission="r" description="AMC HTR Link Statuses Control 76" tags="AMCXX_HTR_LNK_ST_CTL_76">
+  <node id="AMCXX_HTR_LNK_L1A_INF_WA" mask="0x3ff" permission="r" description="L1Ainfo Write Address" tags="AMCXX_HTR_LNK_ST_CTL_76"/>
+</node>
+<node id="AMCXX_HTR_LNK_ST_CTL_78" address="0x78" permission="r" description="AMC HTR Link Statuses Control 78" tags="AMCXX_HTR_LNK_ST_CTL_78">
+  <node id="AMCXX_HTR_LNK_L1A_INF_RA" mask="0x3ff" permission="r" description="L1Ainfo Read Address" tags="AMCXX_HTR_LNK_ST_CTL_78"/>
+</node>
+<node id="AMCXX_HTR_LNK_ST_CTL_7A" address="0x7a" permission="r" description="AMC HTR Link Statuses Control 7a" tags="AMCXX_HTR_LNK_ST_CTL_7A">
+  <node id="AMCXX_HTR_LNK_L1A_FULL" mask="0x8000" permission="r" description="HTR_L1A_full" tags="AMCXX_HTR_LNK_ST_CTL_7A"/>
+  <node id="AMCXX_HTR_LNK_L1A" mask="0x3f00" permission="r" description="HTR_L1A" tags="AMCXX_HTR_LNK_ST_CTL_7A"/>
+  <node id="AMCXX_HTR_LNK_L1A_INF_WAP" mask="0xff" permission="r" description="L1Ainfo_wap" tags="AMCXX_HTR_LNK_ST_CTL_7A"/>
+</node>
+<node id="AMCXX_HTR_LNK_ST_CTL_7C" address="0x7c" permission="r" description="AMC HTR Link Statuses Control 7c" tags="AMCXX_HTR_LNK_ST_CTL_7C">
+  <node id="AMCXX_HTR_LNK_RESND_QUE" mask="0xc000" permission="r" description="ReSendQue Address" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_RFIFO_A" mask="0x3000" permission="r" description="rfifo Address" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_ACKNUM_A" mask="0xc00" permission="r" description="ACKNUM Address" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_RE_SYNC_3" mask="0x200" permission="r" description="reset_sync(3)" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_RXLOSSSYNC" mask="0x100" permission="r" description="RXLOSSOFSYNC(1)" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_TX_RE_DONE" mask="0x80" permission="r" description="TxResetDone" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_RX_RE_DONE" mask="0x40" permission="r" description="RxResetDone" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_RX_PLL_LCK" mask="0x20" permission="r" description="RxPllLock" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_INIT_LNK" mask="0x10" permission="r" description="InitLink" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+  <node id="AMCXX_HTR_LNK_TX_STATE" mask="0xf" permission="r" description="TxState" tags="AMCXX_HTR_LNK_ST_CTL_7C"/>
+</node>
+<node id="AMCXX_HTR_LNK_ST_CTL_7E" address="0x7e" permission="r" description="AMC HTR Link Statuses Control 7e" tags="AMCXX_HTR_LNK_ST_CTL_7E">
+  <node id="AMCXX_HTR_LNK_GOT_HTR_BC0" mask="0x10" permission="r" description="got_HTR_BC0" tags="AMCXX_HTR_LNK_ST_CTL_7E"/>
+  <node id="AMCXX_HTR_LNK_TTC_LOCK" mask="0x8" permission="r" description="TTC_lock" tags="AMCXX_HTR_LNK_ST_CTL_7E"/>
+  <node id="AMCXX_HTR_LNK_BC0_LOCK" mask="0x4" permission="r" description="BC0_lock" tags="AMCXX_HTR_LNK_ST_CTL_7E"/>
+  <node id="AMCXX_HTR_LNK_RDEN_TOGG" mask="0x2" permission="r" description="HTR_RdEnToggle" tags="AMCXX_HTR_LNK_ST_CTL_7E"/>
+  <node id="AMCXX_HTR_LNK_EVINF_TOGG" mask="0x1" permission="r" description="EventInfoToggle  " tags="AMCXX_HTR_LNK_ST_CTL_7E"/>
+</node>

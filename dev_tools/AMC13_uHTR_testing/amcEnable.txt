@@ -1,0 +1,8 @@
+wv 0 1
+wv 0 2
+ws 0xd 0xfff
+wv 0x18 0xfff
+i 2 t
+localL1A b 1 150
+wv 0 1
+q

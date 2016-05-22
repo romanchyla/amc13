@@ -1,0 +1,210 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+use Getopt::Long;
+use POSIX qw(WEXITSTATUS);
+
+our $OPT_CONFIGENABLE = 0;
+our $OPT_CONFIGDISABLE = 0;
+our $OPT_HOST = undef;
+our $OPT_SLOT = 13;
+our $OPT_USER = '';
+our $OPT_PASS = '';
+our $OPT_STORECONFIG = undef;
+our $OPT_APPLYCONFIG = undef;
+our $OPT_AUTOSLOT = 0;
+our $OPT_HELP = 0;
+our $OPT_NOISY = 0;
+
+Getopt::Long::GetOptions(
+	'e|enable' => \$OPT_CONFIGENABLE,
+	'd|disable' => \$OPT_CONFIGDISABLE,
+	'H|host=s' => \$OPT_HOST,
+	'b|slot=s' => \$OPT_SLOT,
+	'u|user=s' => \$OPT_USER,
+	'p|pass=s' => \$OPT_PASS,
+	's|store=s' => \$OPT_STORECONFIG,
+	'a|apply=s' => \$OPT_APPLYCONFIG,
+	'g|autoslot' => \$OPT_AUTOSLOT,
+	'h|help' => \$OPT_HELP,
+	'noisy' => \$OPT_NOISY,
+);
+
+if (!defined($OPT_HOST) || !defined($OPT_SLOT)) {
+	printf "I can't do anything if I don't know where to do it.\n";
+	printf "Please supply --host and --slot.\n\n";
+	$OPT_HELP++;
+}
+if ($OPT_CONFIGENABLE && $OPT_CONFIGDISABLE) {
+	printf "I refuse to both enable and disable the same thing.\n\n";
+	$OPT_HELP++;
+}
+unless ($OPT_CONFIGENABLE || $OPT_CONFIGDISABLE || $OPT_APPLYCONFIG || $OPT_STORECONFIG) {
+	printf "Nothing to do!\n\n";
+	$OPT_HELP++;
+}
+if ($OPT_HELP) {
+	print <<EOR;
+$0 --host=192.168.1.240 [--slot=13] [--user=root] [--pass=admin] [--enable|--disable] [--store=config.txt] [--apply=config.txt] [--autoslot]
+  --enable   Enables auto configuration on this card. (All configured records)
+  --disable  Disables auto configuration on this card. (All configured records)
+  --store    Writes the given configuration to non-volatile memory (--enable not implied)
+  --apply    Writes the given configuration to the FPGA directly if REQ_CFG&!CFG_RDY (volatile)
+  --autoslot *Replaces* the first byte of the configuration file dynamically with the card's slot.
+             When used with --store, it will enable this functionality in the MMC.
+			 When --store is used without this option, it will be disabled.
+			 Note: Autoslot can only be enabled/disabled for all records simultaneously.
+EOR
+}
+
+$OPT_SLOT = 26 if ($OPT_SLOT == 13);
+our @IPMITOOL = ( 'ipmitool', '-H', $OPT_HOST, '-U', $OPT_USER, '-P', $OPT_PASS, '-T', '0x82', '-B', '0', '-b', '7', '-t', ($OPT_SLOT != 26 ? 0x70+(2*$OPT_SLOT) : 0xa4), 'raw' );
+
+if ($OPT_STORECONFIG) {
+	my %Datasets = parse_config($OPT_STORECONFIG);
+
+	my @Config = (
+		0x00, #  0 Format key
+		0x00, #  1 Config Record.  x |= 0x80 for slotid.  x |= 1<<PortID to enable.
+		0xff, #  2 Header 1 offset
+		0xff, #  3 Header 2 is not in use
+		0xff, #  4 Header 3 is not in use
+		0,    #  5 = Checksum
+
+	);
+
+	for my $ds (sort keys %Datasets) {
+		next unless @{$Datasets{$ds}};
+
+		$Config[1] |= (1 << $ds);
+
+		my @Section = (
+			0x00, #  6 Header target LSB
+			0x00, #  7 Header target MSB
+			scalar(@{$Datasets{$ds}}),    #  8 = Record Length
+			0,    #  9 = Record Checksum
+			0,    # 10 = Header Checksum (6-9)
+		);
+
+		$Section[3] = ipmi_xsum(@{$Datasets{$ds}});
+		$Section[4] = ipmi_xsum(@Section);
+
+		$Config[2+$ds] = scalar @Config; # Record Offset;
+
+		push @Section, @{$Datasets{$ds}};
+		push @Config, @Section;
+	}
+
+	$Config[1] |= 0x80 if ($OPT_AUTOSLOT);
+	$Config[5] = ipmi_xsum(@Config[0..4]);
+
+	write_nv_config(@Config);
+}
+
+if ($OPT_APPLYCONFIG) {
+	my %Datasets = parse_config($OPT_APPLYCONFIG);
+
+	for my $ds (keys %Datasets) {
+		open(STATUS, '-|', @IPMITOOL, 0x32, 0x31, $ds, 0x00);
+		my @Status = map { hex($_) } split /\s+/, substr(<STATUS>,1); # 1.4 && !1.5
+		close(STATUS);
+
+		unless ($Status[0] & 0x10) {
+			printf "FPGA %s is not currently requesting configuration.  Skipped.\n", $ds;
+			next;
+		}
+		if ($Status[0] & 0x20) {
+			printf "FPGA %s is already configured.  Skipped.\n", $ds;
+			next;
+		}
+
+		write_spi_config($ds, @{$Datasets{$ds}});
+		ipmitool(0x32, 0x32, $ds, 0x12);
+	}
+}
+
+if ($OPT_CONFIGENABLE || $OPT_CONFIGDISABLE) {
+	my $Enabled = 0;
+	$Enabled = 1 if ($OPT_CONFIGENABLE);
+	ipmitool(0x32, 0x03, 0xa0, $Enabled, 0, 0, 0);
+}
+
+sub write_nv_config {
+	my @Config = @_;
+
+	# Get NV Area Info
+	open(NVINFO, '-|', , @IPMITOOL, 0x32, 0x40, 0x00);
+	my @NVInfo = map { hex($_) } split /\s+/, substr(<NVINFO>,1);
+	close(NVINFO);
+
+	die sprintf("Configuration Too Large %u > %u (with header)", scalar(@Config), $NVInfo[15]*32) if (scalar(@Config) > $NVInfo[15]*32);
+
+	# Write the config data.
+	my $WritePos = ($NVInfo[14] << 8) | $NVInfo[13];
+	printf "Selected Write Position: %04x\n", $WritePos if ($OPT_NOISY);
+	while (@Config) {
+		my @Data = splice(@Config, 0, 20);
+		my @CMD = (0x32, 0x41, $WritePos & 0xff, $WritePos >> 8, scalar(@Data), @Data);
+		ipmitool(@CMD);
+		sleep(1);
+		$WritePos += scalar @Data;
+	}
+}
+
+sub write_spi_config {
+	my $Chip = shift;
+	my @Config = @_;
+
+	$Config[0] = $OPT_SLOT if ($OPT_AUTOSLOT);
+
+	my $WritePos = 0;
+	while (@Config) {
+		my @Data = splice(@Config, 0, 20);
+		ipmitool(0x32, 0x33, $Chip, $WritePos & 0xff, $WritePos >> 8, scalar(@Data), @Data);
+		sleep(1);
+		$WritePos += scalar @Data;
+	}
+
+	# And commit.
+	ipmitool(0x32, 0x32, 0x00, 0x22);
+}
+
+sub ipmi_xsum {
+	my $Sum = 0;
+	for my $i (@_) {
+		$Sum += $i;
+		$Sum %= 256;
+	}
+	return 0x100 - $Sum
+}
+
+sub parse_config {
+	my $File = shift;
+
+	my %Configs = ( 0 => [], 1 => [], 2 => [] );
+
+	my $CurrentPort = 0;
+
+	open(my $fd, '<', $File) or die "Unable to open $File";
+	while (my $Line = <$fd>) {
+		$Line =~ s/#.*//;
+		my @LineData = split /\s+/, $Line;
+		foreach my $LineByte (@LineData) {
+			if ($LineByte =~ /^Port([0-2])$/) {
+				$CurrentPort = int($1);
+				next;
+			}
+			die "Invalid token in FPGA configuration file: \"$LineByte\"" unless ($LineByte =~ /^(?:0x)?([a-z0-9]{1,2})$/i);
+			push @{$Configs{$CurrentPort}}, hex($1);
+		}
+	}
+	close($fd);
+
+	return %Configs;
+}
+
+sub ipmitool {
+	printf("sending %s\n", join " ", map { sprintf("%02x", $_) } @_) if ($OPT_NOISY);
+	system(@IPMITOOL, @_);
+	#DEBUG: printf("returned %d\n", WEXITSTATUS($?));
+}

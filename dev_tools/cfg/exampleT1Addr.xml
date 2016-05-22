@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Example AMC13 Virtex-6/Kintex-7 Address Table -->
+
+<node id="TOP">
+  <node id="RESETS">
+    <node id="GENERAL" address="0x0" mask="0x1" permission="w" description="general reset" tags="CONTROL0"/>
+    <node id="COUNTER" address="0x0" mask="0x2" permission="w" description="counter reset" tags="CONTROL0"/>
+    <node id="SDRAM" address="0x0" mask="0x20" permission="w" description="Reset DDR SDRAM" tags="CONTROL0"/>  
+    <node id="EVN" address="0x0" mask="0x800" permission="w" description="Event Number Reset through TTC when in local L1A mode" tags="CONTROL0"/>
+    <node id="ORN" address="0x0" mask="0x1000" permission="w" description="Orbit Number Reset through TTC when in local L1A mode" tags="CONTROL0"/>
+  </node>
+  <node id="T1_INFO">
+    <node id="SERIAL_NO" address="0x0" mask="0xff000000" permission="r" description="T1 Serial Number" tags="CONTROL0"/>
+    <node id="FIRM_VER" address="0x1" mask="0xffff0000" permission="r" description="T1 Firmware Version" tags="CONTROL1"/>
+  </node>
+  <node id="TTC_STATUS">
+    <node id="NOT_RDY" address="0x0" mask="0x20" permission="r" description="TTC Not Ready" tags="CONTROL0"/>
+    <node id="BCNT_ERR" address="0x0" mask="0x40" permission="r" description="TTC Bcnt Error" tags="CONTROL0"/>
+    <node id="SGL_ERR" address="0x0" mask="0x80" permission="r" description="TTC Single Bit Error" tags="CONTROL0"/>
+    <node id="MLT_ERR" address="0x0" mask="0x100" permission="r" description="TTC Multi Bit Error" tags="CONTROL0"/>
+    <node id="SYNC_LOST" address="0x0" mask="0x200" permission="r" description="TTC Sync Lost" tags="CONTROL0"/>
+  </node>
+  <node id="LOCAL_L1A">
+    <node id="BURST" address="0x0" mask="0x400" permission="w" description="Send Burst of Local L1A" tags="CONTROL0"/>
+    <node id="CONTINUOUS" address="0x0" mask="0x4000000" permission="w" description="Set Continuous Local L1A mode" tags="CONTROL0"/>
+    <node id="L1A_TYPE" address="0x1c" mask="0xc0000000" permission="rw" description="'00' L1A per orbit, '10' per bunch crossing, '11' random" tags="L1A_CONTROL"/>
+    <node id="TRIGGER_RULES_ENFORCED" address="0x1c" mask="0x30000000" permission="rw" description="'00' all four rules, '01' not rule 4, '10' rule 1 and 2, '11' rule 1" tags="L1A_CONTROL"/>
+    <node id="NUMBER_BURST_L1A" address="0x1c" mask="0xfff0000" permission="rw" description="number of burst L1As + 1" tags="L1A_CONTROL"/>
+    <node id="GEN_PERIOD_L1A" address="0x1c" mask="0xffff" permission="rw" description="L1A spacing: OrN = (N+1), BcN = (N+1), random = (2*N/s)" tags="L1A_CONTROL"/>
+  </node>
+  <node id="MONITOR_BUFFER_STATUS">
+    <node id="FULL" address="0x0" mask="0x4" permission="r" description="Monitor Buffer Full" tags="CONTROL0"/>
+    <node id="EMPTY" address="0x0" mask="0x8" permission="r" description="Monitor Buffer Empty" tags="CONTROL0"/>
+    <node id="POINTER" address="0x2" mask="0x7f00" permission="r" description="Monitor Buffer Write Pointer	" tags="CONTROL2"/>
+    <node id="128_EV_BUF" address="0x2" mask="0x8000" permission="r" description="At least 128 Evs in buffer" tags="CONTROL2"/>
+    <node id="PAUSE_EV_BLD" address="0x1" mask="0x8" permission="rw" description="'1' pauses event building" tags="CONTROL1"/>
+    <node id="NUM_EV_AFTER_TRIG" address="0x2" mask="0xff" permission="r" description="Num of Evs Captured after Trigger" tags="CONTROL2"/>
+  </node>
+  <node id="MONITOR_BUFFER" address="0x4000" permission="r" mode="incremental" size="512" description="Monitor data buffer (0x4000-0x7fff)" tags="MONITOR_BUFFER"/>
+  <node id="FULL_MEMORY" address="0x8000000" permission="rw" mode="incremental" size="67108864" description="Full memory read/write access (write disabled when in run mode) (0x8000000-0xbffffff)" tags="FULL_MEMORY"/>
+  <node id="EN_OPTIONS">
+    <node id="SV_DAQ_DTA_BUF" address="0x1" mask="0x8000" permission="rw" description="Save received DAQ data to monitor buffer" tags="CONTROL1"/>
+    <node id="STOP_EV_BLD" address="0x1" mask="0x4000" permission="rw" description="if '1', monitor buffer full will stop event builder" tags="CONTROL1"/>
+    <node id="TTS_OUT_TTC_OUT" address="0x1" mask="0x100" permission="rw" description="TTS output is TTC signal output" tags="CONTROL1"/>
+    <node id="GEN_FK_DATA" address="0x1" mask="0x80" permission="rw" description="generate fake data upon recieving L1A" tags="CONTROL1"/>
+    <node id="TTCRX_BDCST_COMM" address="0x1" mask="0x20" permission="rw" description="'1' enables TTCrx boradcast commands" tags="CONTROL1"/>
+    <node id="INT_GEN_L1A" address="0x1" mask="0x4" permission="rw" description="'1' uses internally generated L1A" tags="CONTROL1"/>
+  </node>
+  <node id="TEST_BITS">
+    <node id="TTS_DRVR_TEST" address="0x1" mask="0x1000" permission="rw" description="if '1', TTS outputs correspond to bits 0-3 of 0x19 instead of TTS state" tags="CONTROL1"/>
+    <node id="DAQ_LINK_TEST" address="0x1" mask="0x200" permission="rw" description="For testing the DAQ Link SFP Connections" tags="CONTROL1"/>
+    <node id="MEM_TST_BIT" address="0x1" mask="0x40" permission="rw" description="if '0', mem test uses 64bit PRBS. if '1', uses 32bit seq nums" tags="CONTROL1"/>
+    <node id="MEM_SLF_TST" address="0x1" mask="0x10" permission="rw" description="'1' enables memory self test" tags="CONTROL1"/>
+  </node>
+<!--Run Mode-->
+  <node id="RUN_MODE" address="0x1" mask="0x1" permission="rw" description="Run Mode" tags="CONTROL1"/>
+<!-- Useful counter regs in status, may be futher regouped, L1A counter may go to L1A subnode -->
+  <node id="STATUS">
+    <node id="MON_EV_SZ" address="0xd" permission="r" description="Monitored Ev Size in 32-bit word. Returns '0' in run mode if no data available" tags="MON_EV_SZ"/>
+    <node id="UNREAD_EV_CAPT" address="0xe" permission="r" description="Number of unread events captured by monitor  " tags="UNREAD_EV_CAPT"/>
+    <node id="HTR_CRC_CHECK" address="0xf" permission="r" description="HTR CRC check error count of built events" tags="HTR_CRC_CHECK"/>
+    <node id="FAKE_DATA_PAYLOAD" address="0x18" permission="rw" description="Payload size in 16bit words of fake HTR event" tags="FAKE_DATA_PAYLOAD"/>
+    <!--L1A Overflow Warning-->
+    <node id="L1A_OVFL_WARN" address="0x0" mask="0x2000" permission="r" description="L1A Overflow Warning" tags="CONTROL0"/>
+    <node id="L1A_LO" address="0x46" permission="r" description="L1A Counter" tags="L1A_LO"/>
+    <node id="L1A_HI" address="0x47" permission="r" description="" tags="L1A_HI"/>
+    <node id="RUN_TIME_LO" address="0x48" permission="r" description="Run Time Counter" tags="RUN_TIME_LO"/>
+    <node id="RUN_TIME_HI" address="0x49" permission="r" description="" tags="RUN_TIME_HI"/>
+    <node id="RDY_TIME_LO" address="0x4a" permission="r" description="Ready Time Counter" tags="RDY_TIME_LO"/>
+    <node id="RDY_TIME_HI" address="0x4b" permission="r" description="" tags="RDY_TIME_HI"/>
+    <node id="BUSY_TIME_LO" address="0x4c" permission="r" description="Busy Time Counter" tags="BUSY_TIME_LO"/>
+    <node id="BUSY_TIME_HI" address="0x4d" permission="r" description="" tags="BUSY_TIME_HI"/>
+    <node id="L1A_SYNC_LOST_TIME_LO" address="0x4e" permission="r" description="L1A Sync Lost Time Counter" tags="L1A_SYNC_LOST_TIME_LO"/>
+    <node id="L1A_SYNC_LOST_TIME_HI" address="0x4f" permission="r" description="" tags="L1A_SYNC_LOST_TIME_HI"/>
+    <node id="L1A_OVFL_WARN_TIME_LO" address="0x50" permission="r" description="L1A Overflow Warning Time Counter" tags="L1A_OVFL_WARN_TIME_LO"/>
+    <node id="L1A_OVFL_WARN_TIME_HI" address="0x51" permission="r" description="" tags="L1A_OVFL_WARN_TIME_HI"/>
+    <node id="TOT_MON_EV_LO" address="0x56" permission="r" description="Total Monitored Event Counter" tags="TOT_MON_EV_LO"/>
+    <node id="TOT_MON_EV_HI" address="0x57" permission="r" description="" tags="TOT_MON_EV_HI"/>
+  </node>
+  <node id="ERR_CTCH">
+    <node id="ENA_ERR_COND" address="0x2" mask="0xff000000" permission="r" description="Enabled error conditions of recorded events" tags="CONTROL2"/>
+    <node id="CTCH_CRC_ERR" address="0x2" mask="0x20000" permission="rw" description="if '1', catches evs when CRC error" tags="CONTROL2"/>
+    <node id="CTCH_EVN_ORN_BCNT_ERR" address="0x2" mask="0x10000" permission="rw" description="if '1', catches evs when evn/orn/bcnt mismatch" tags="CONTROL2"/>
+  </node>
+  <node id="SCALING">
+    <node id="MEGA_SCALE" address="0x2" mask="0x800000" permission="rw" description="if '1', save every n EVN where n is determined by bits 19-22" tags="CONTROL2"/>
+    <node id="PRE_SCALE_FACT" address="0x2" mask="0x780000" permission="rw" description="PreScale Factor. 0xf low 5 bits 0, 0x0 low 50 bits 0" tags="CONTROL2"/>
+    <node id="SCALE_FACT" address="0x2" mask="0xffff" permission="w" description="scale factor( = contents + 1)" tags="CONTROL2"/>
+  </node>
+  <node id="LINK_READY">
+    <node id="AMC11_LK_RDY" address="0x3" mask="0x8000000" permission="r" description="'1' indicates AMC11 Link Ready" tags="CONTROL3"/>
+    <node id="AMC10_LK_RDY" address="0x3" mask="0x4000000" permission="r" description="'1' indicates AMC10 Link Ready" tags="CONTROL3"/>
+    <node id="AMC09_LK_RDY" address="0x3" mask="0x2000000" permission="r" description="'1' indicates AMC09 Link Ready" tags="CONTROL3"/>
+    <node id="AMC08_LK_RDY" address="0x3" mask="0x1000000" permission="r" description="'1' indicates AMC08 Link Ready" tags="CONTROL3"/>
+    <node id="AMC07_LK_RDY" address="0x3" mask="0x800000" permission="r" description="'1' indicates AMC07 Link Ready" tags="CONTROL3"/>
+    <node id="AMC06_LK_RDY" address="0x3" mask="0x400000" permission="r" description="'1' indicates AMC06 Link Ready" tags="CONTROL3"/>
+    <node id="AMC05_LK_RDY" address="0x3" mask="0x200000" permission="r" description="'1' indicates AMC05 Link Ready" tags="CONTROL3"/>
+    <node id="AMC04_LK_RDY" address="0x3" mask="0x100000" permission="r" description="'1' indicates AMC04 Link Ready" tags="CONTROL3"/>
+    <node id="AMC03_LK_RDY" address="0x3" mask="0x80000" permission="r" description="'1' indicates AMC03 Link Ready" tags="CONTROL3"/>
+    <node id="AMC02_LK_RDY" address="0x3" mask="0x40000" permission="r" description="'1' indicates AMC02 Link Ready" tags="CONTROL3"/>
+    <node id="AMC01_LK_RDY" address="0x3" mask="0x20000" permission="r" description="'1' indicates AMC01 Link Ready" tags="CONTROL3"/>
+    <node id="AMC00_LK_RDY" address="0x3" mask="0x10000" permission="r" description="'1' indicates AMC00 Link Ready" tags="CONTROL3"/>
+  </node>
+  <node id="ENABLE_AMC">
+    <node id="ENA_AMC11" address="0x3" mask="0x800" permission="rw" description="'1' enables AMC11" tags="CONTROL3"/>
+    <node id="ENA_AMC10" address="0x3" mask="0x400" permission="rw" description="'1' enables AMC10" tags="CONTROL3"/>
+    <node id="ENA_AMC09" address="0x3" mask="0x200" permission="rw" description="'1' enables AMC09" tags="CONTROL3"/>
+    <node id="ENA_AMC08" address="0x3" mask="0x100" permission="rw" description="'1' enables AMC08" tags="CONTROL3"/>
+    <node id="ENA_AMC07" address="0x3" mask="0x80" permission="rw" description="'1' enables AMC07" tags="CONTROL3"/>
+    <node id="ENA_AMC06" address="0x3" mask="0x40" permission="rw" description="'1' enables AMC06" tags="CONTROL3"/>
+    <node id="ENA_AMC05" address="0x3" mask="0x20" permission="rw" description="'1' enables AMC05" tags="CONTROL3"/>
+    <node id="ENA_AMC04" address="0x3" mask="0x10" permission="rw" description="'1' enables AMC04" tags="CONTROL3"/>
+    <node id="ENA_AMC03" address="0x3" mask="0x8" permission="rw" description="'1' enables AMC03" tags="CONTROL3"/>
+    <node id="ENA_AMC02" address="0x3" mask="0x4" permission="rw" description="'1' enables AMC02" tags="CONTROL3"/>
+    <node id="ENA_AMC01" address="0x3" mask="0x2" permission="rw" description="'1' enables AMC01" tags="CONTROL3"/>
+    <node id="ENA_AMC00" address="0x3" mask="0x1" permission="rw" description="'1' enables AMC00" tags="CONTROL3"/>
+  </node>
+  <node id="LK_VER_WRONG" address="0x5" permission="r" description="control register 0x5" tags="CONTROL5">
+    <node id="PORT_SYNC_LOST" mask="0xfff0000" permission="r" description="'0' indicates sync lost at corresponding AMC Port" tags="CONTROL5"/>
+    <node id="AMC11_LK_VER" mask="0x800" permission="r" description="'1' AMC11 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC10_LK_VER" mask="0x400" permission="r" description="'1' AMC10 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC09_LK_VER" mask="0x200" permission="r" description="'1' AMC09 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC08_LK_VER" mask="0x100" permission="r" description="'1' AMC08 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC07_LK_VER" mask="0x80" permission="r" description="'1' AMC07 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC06_LK_VER" mask="0x40" permission="r" description="'1' AMC06 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC05_LK_VER" mask="0x20" permission="r" description="'1' AMC05 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC04_LK_VER" mask="0x10" permission="r" description="'1' AMC04 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC03_LK_VER" mask="0x8" permission="r" description="'1' AMC03 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC02_LK_VER" mask="0x4" permission="r" description="'1' AMC02 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC01_LK_VER" mask="0x2" permission="r" description="'1' AMC01 Link Version Wrong" tags="CONTROL5"/>
+    <node id="AMC00_LK_VER" mask="0x1" permission="r" description="'1' AMC00 Link Version Wrong" tags="CONTROL5"/>
+  </node>
+  <node id="BC0_LOCK" address="0x6" permission="r" description="control register 0x6" tags="CONTROL6">
+    <node id="AMC11_BC0_LOCK" mask="0x8000000" permission="r" description="AMC11 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC10_BC0_LOCK" mask="0x4000000" permission="r" description="AMC10 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC09_BC0_LOCK" mask="0x2000000" permission="r" description="AMC09 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC08_BC0_LOCK" mask="0x1000000" permission="r" description="AMC08 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC07_BC0_LOCK" mask="0x800000" permission="r" description="AMC07 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC06_BC0_LOCK" mask="0x400000" permission="r" description="AMC06 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC05_BC0_LOCK" mask="0x200000" permission="r" description="AMC05 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC04_BC0_LOCK" mask="0x100000" permission="r" description="AMC04 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC03_BC0_LOCK" mask="0x80000" permission="r" description="AMC03 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC02_BC0_LOCK" mask="0x40000" permission="r" description="AMC02 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC01_BC0_LOCK" mask="0x20000" permission="r" description="AMC01 Bc0 Locked" tags="CONTROL6"/>
+    <node id="AMC00_BC0_LOCK" mask="0x10000" permission="r" description="AMC00 Bc0 Locked" tags="CONTROL6"/>
+    <node id="SET_BC0_COMP" mask="0x1f" permission="r" description="Set Bc0 compensation, default to 0x18" tags="CONTROL6"/>
+  </node>
+  <node id="OFFST_REG" address="0x8" permission="rw" description="control register 0x8" tags="CONTROL8">
+    <node id="ORN_OFFST" mask="0xf0000" permission="rw" description="orbit number offset" tags="CONTROL8"/>
+    <node id="TTC_BCNT_RESET" mask="0x100" permission="rw" description="'1' ttc_bcnt_reset only works once after system reset" tags="CONTROL8"/>
+    <node id="BCNT_OFFST" mask="0xff" permission="rw" description="Bcnt Offset" tags="CONTROL8"/>
+  </node>
+  <node id="CALIB_REG" address="0x9" permission="rw" description="control regster 0x9" tags="CONTROL9">
+    <node id="CALIB_EV_ENA" mask="0x80000000" permission="rw" description="'1' Calibration events enabled (default 1)" tags="CONTROL9"/>
+    <node id="CALIB_WIN_UPPER_RD" mask="0xfff0000" permission="r" description="Calibration window upper limit(included)" tags="CONTROL9"/>
+    <node id="CURR_LSR_POS" mask="0xf000" permission="r" description="Current laser position" tags="CONTROL9"/>
+    <node id="CALIB_WIN_LOWER_RD" mask="0xfff" permission="r" description="Calibration window lower limit(not included)" tags="CONTROL9"/>
+    <node id="CALIB_WIN_UPPER_WR" mask="0x3f0000" permission="w" description="Settable Part of Calibration WIN upper lim (bits 27-22 fixed 110110), default 100110" tags="CONTROL9"/>
+    <node id="CALIB_WIN_LOWER_WR" mask="0x3f" permission="w" description="Settable Part of Calibration WIN lower lim (bits 11-6 fixed 110110), default 011101" tags="CONTROL9"/>
+  </node>
+  <node id="MON_BUF_STATUS" address="0x10" permission="r" description="Monitor Buffer Status" tags="MON_BUF_STATUS">
+    <node id="MON_BUF_AVAILABLE" mask="0x20000" permission="r" description="Monitor Buffer Available" tags="MON_BUF_STATUS"/>
+    <node id="TCP_BUF_AVAILABLE" mask="0x10000" permission="r" description="TCP Buffer Available" tags="MON_BUF_STATUS"/>
+    <node id="DDR3_PORT_INPUT_FULL" mask="0x7000" permission="r" description="DDR3 event data write port input FIFO full" tags="MON_BUF_STATUS"/>
+    <node id="DDR3_PORT_READY" mask="0x700" permission="r" description="DDR3 event data write port ready" tags="MON_BUF_STATUS"/>
+    <node id="EVB_BUF_EVENT_SIZE" mask="0x70" permission="r" description="Event size in even buffer of event builders" tags="MON_BUF_STATUS"/>
+    <node id="EVB_BUF_EVENT_READY" mask="0x7" permission="r" description="Event data ready in event buffer of event builders" tags="MON_BUF_STATUS"/>
+  </node>
+  <node id="TEMP_PWR">
+    <node id="V6_DIE_TEMP" address="0x30" permission="r" description="V6 die temperature in unit of 0.1 degree Celsius" tags="V6_DIE_TEMP"/>
+    <node id="1.0V_ANA_PWR" address="0x31" permission="r" description="1.0V analog power voltage in millivolt" tags="1.0V_ANA_PWR"/>
+    <node id="1.2V_ANA_PWR" address="0x32" permission="r" description="1.2V analog power voltage in millivolt" tags="1.2V_ANA_PWR"/>
+    <node id="1.0V_PWR" address="0x33" permission="r" description="1.0V power voltage in millivolt" tags="1.0V_PWR"/>
+    <node id="1.5V_PWR" address="0x34" permission="r" description="1.5V power voltage in millivolt" tags="1.5V_PWR"/>
+    <node id="2.5V_PWR" address="0x35" permission="r" description="2.5V power voltage in millivolt" tags="2.5V_PWR"/>
+    <node id="3.3V_PWR" address="0x36" permission="r" description="3.3V power voltage in millivolt" tags="3.3V_PWR"/>
+    <node id="12V_PWR" address="0x38" permission="r" description="12V power voltage in millivolt" tags="12V_PWR"/>
+    <node id="1.8V_VCC_AUX_GTX_PWR" address="0x39" permission="r" description="1.8V VccAuxGTX power voltage in millivolt" tags="1.8V_VCC_AUX_GTX_PWR"/>
+    <node id="2.0V_VCC_AUX_IO_PWR" address="0x3a" permission="r" description="2.0V VccAuxIO power voltage in millivolt" tags="2.0V_VCC_AUX_IO_PWR"/>
+    <node id="0.75V_DDR3_VTT_PWR" address="0x3b" permission="r" description="0.75V DDR_Vtt power voltage in millivolt" tags="0.75V_DDR3_VTT_PWR"/>
+    <node id="0.75V_DDR3_VREF_PWR" address="0x3c" permission="r" description="0.75V DDR_Vref power voltage in millivolt" tags="0.75V_DDR3_VREF_PWR"/>
+    <node id="1.8V_VCC_AUX_PWR" address="0x3d" permission="r" description="1.8V VccAux power voltage in millivolt" tags="1.8V_VCC_AUX_PWR"/>
+    <node id="1.0V_VCC_BRAM_PWR" address="0x3e" permission="r" description="1.0V VccBRAM power voltage in millivolt" tags="1.0V_VCC_BRAM_PWR"/>
+  </node>
+  <node id="TTC_ERR">
+    <node id="TTC_SGL_ERR_LO" address="0x40" permission="r" description="TTC Single bit error counter" tags="TTC_SGL_ERR_LO"/>
+    <node id="TTC_SGL_ERR_HI" address="0x41" permission="r" description="" tags="TTC_SGL_ERR_HI"/>
+    <node id="TTC_MUL_ERR_LO" address="0x42" permission="r" description="TTC Multi bit error counter" tags="TTC_MUL_ERR_LO"/>
+    <node id="TTC_MUL_ERR_HI" address="0x43" permission="r" description="" tags="TTC_MUL_ERR_HI"/>
+    <node id="TTC_BC0_ERR_LO" address="0x44" permission="r" description="TTC BC0 Error Counter" tags="TTC_BC0_ERR_LO"/>
+    <node id="TTC_BC0_ERR_HI" address="0x45" permission="r" description="" tags="TTC_BC0_ERR_HI"/>
+  </node>
+  <node id="SFP_ROM">
+    <node id="SFP0_ROM" address="0x100" permission="r" description="SFP0 ROM data (first 128 bytes, little endian) (regs 0x100-0x11f)" tags="SFP0_ROM"/>
+    <node id="SFP1_ROM" address="0x120" permission="r" description="SFP1 ROM data (first 128 bytes, little endian) (regs 0x100-0x11f)" tags="SFP1_ROM"/>
+    <node id="SFP2_ROM" address="0x140" permission="r" description="SFP2 ROM data (first 128 bytes, little endian) (regs 0x100-0x11f)" tags="SFP2_ROM"/>
+    <node id="TTC_TTS_SFP_ROM" address="0x160" permission="r" description="TTC/TTS SFP ROM data (fiorst 128 bytes, little endian) (regs 0x160-0x17f)" tags="TTC_TTS_SFP_ROM"/>
+  </node>
+  <!-- AMCXX Module Use  -->
+  <node id="AMC00" module="file://AMCXX_Module.xml"  address="0x800"/>
+  <node id="AMC01" module="file://AMCXX_Module.xml"  address="0x880"/>
+  <node id="AMC02" module="file://AMCXX_Module.xml"  address="0x900"/>
+  <node id="AMC03" module="file://AMCXX_Module.xml"  address="0x980"/>
+  <node id="AMC04" module="file://AMCXX_Module.xml"  address="0xa00"/>
+  <node id="AMC05" module="file://AMCXX_Module.xml"  address="0xa80"/>
+  <node id="AMC06" module="file://AMCXX_Module.xml"  address="0xb00"/>
+  <node id="AMC07" module="file://AMCXX_Module.xml"  address="0xb80"/>
+  <node id="AMC08" module="file://AMCXX_Module.xml"  address="0xc00"/>
+  <node id="AMC09" module="file://AMCXX_Module.xml"  address="0xc80"/>
+  <node id="AMC10" module="file://AMCXX_Module.xml"  address="0xd00"/>
+  <node id="AMC11" module="file://AMCXX_Module.xml"  address="0xd80"/>
+  <!-- AMCXX_HTR Module Use  -->  
+  <node id="AMC00_HTR_IF" address="0xe00" permission="r" description="HTR_if Status for AMC" tags="AMC00_HTR_IF">
+    <node id="AMC00_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC00_HTR_IF"/>
+    <node id="AMC00_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC00_HTR_IF"/>
+    <node id="AMC00_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC00_HTR_IF"/>
+  </node>
+  <node id="AMC01_HTR_IF" address="0xe01" permission="r" description="HTR_if Status for AMC" tags="AMC01_HTR_IF">
+    <node id="AMC01_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC01_HTR_IF"/>
+    <node id="AMC01_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC01_HTR_IF"/>
+    <node id="AMC01_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC01_HTR_IF"/>
+  </node>
+  <node id="AMC02_HTR_IF" address="0xe02" permission="r" description="HTR_if Status for AMC" tags="AMC02_HTR_IF">
+    <node id="AMC02_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC02_HTR_IF"/>
+    <node id="AMC02_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC02_HTR_IF"/>
+    <node id="AMC02_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC02_HTR_IF"/>
+  </node>
+  <node id="AMC03_HTR_IF" address="0xe03" permission="r" description="HTR_if Status for AMC" tags="AMC03_HTR_IF">
+    <node id="AMC03_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC03_HTR_IF"/>
+    <node id="AMC03_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC03_HTR_IF"/>
+    <node id="AMC03_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC03_HTR_IF"/>
+  </node>
+  <node id="AMC04_HTR_IF" address="0xe04" permission="r" description="HTR_if Status for AMC" tags="AMC04_HTR_IF">
+    <node id="AMC04_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC04_HTR_IF"/>
+    <node id="AMC04_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC04_HTR_IF"/>
+    <node id="AMC04_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC04_HTR_IF"/>
+  </node>
+  <node id="AMC05_HTR_IF" address="0xe05" permission="r" description="HTR_if Status for AMC" tags="AMC05_HTR_IF">
+    <node id="AMC05_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC05_HTR_IF"/>
+    <node id="AMC05_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC05_HTR_IF"/>
+    <node id="AMC05_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC05_HTR_IF"/>
+  </node>
+  <node id="AMC06_HTR_IF" address="0xe06" permission="r" description="HTR_if Status for AMC" tags="AMC06_HTR_IF">
+    <node id="AMC06_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC06_HTR_IF"/>
+    <node id="AMC06_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC06_HTR_IF"/>
+    <node id="AMC06_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC06_HTR_IF"/>
+  </node>
+  <node id="AMC07_HTR_IF" address="0xe07" permission="r" description="HTR_if Status for AMC" tags="AMC07_HTR_IF">
+    <node id="AMC07_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC07_HTR_IF"/>
+    <node id="AMC07_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC07_HTR_IF"/>
+    <node id="AMC07_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC07_HTR_IF"/>
+  </node>
+  <node id="AMC08_HTR_IF" address="0xe08" permission="r" description="HTR_if Status for AMC" tags="AMC08_HTR_IF">
+    <node id="AMC08_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC08_HTR_IF"/>
+    <node id="AMC08_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC08_HTR_IF"/>
+    <node id="AMC08_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC08_HTR_IF"/>
+  </node>
+  <node id="AMC09_HTR_IF" address="0xe09" permission="r" description="HTR_if Status for AMC" tags="AMC09_HTR_IF">
+    <node id="AMC09_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC09_HTR_IF"/>
+    <node id="AMC09_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC09_HTR_IF"/>
+    <node id="AMC09_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC09_HTR_IF"/>
+  </node>
+  <node id="AMC10_HTR_IF" address="0xe0a" permission="r" description="HTR_if Status for AMC" tags="AMC10_HTR_IF">
+    <node id="AMC10_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC10_HTR_IF"/>
+    <node id="AMC10_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC10_HTR_IF"/>
+    <node id="AMC10_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC10_HTR_IF"/>
+  </node>
+  <node id="AMC11_HTR_IF" address="0xe0b" permission="r" description="HTR_if Status for AMC" tags="AMC11_HTR_IF">
+    <node id="AMC11_HTR_IF_TTS" mask="0xf0000000" permission="r" description="HTR_if TTS" tags="AMC11_HTR_IF"/>
+    <node id="AMC11_HTR_IF_TRIG_DATA" mask="0xff00000" permission="r" description="HTR_if TrigData" tags="AMC11_HTR_IF"/>
+    <node id="AMC11_HTR_IF_EV_INFO" mask="0xfffff" permission="r" description="HTR_if EventInfo" tags="AMC11_HTR_IF"/>
+  </node>
+  <node id="HTR_IF_STATUS_01" address="0xe0c" permission="r" description="First HTR_if Status Register" tags="HTR_IF_STATUS_01">
+    <node id="HTR_IF_EV_INFO_DAV" mask="0xffffffff" permission="r" description="HTR_if EventInfo_dav" tags="HTR_IF_STATUS_01"/>
+  </node>
+  <node id="HTR_TTC_STATUS" address="0xe0d" permission="r" description="HTR_TTC status" tags="HTR_TTC_STATUS">
+    <node id="HTR_TTC_LOCKED" mask="0xfff0000" permission="r" description="'1' if corresponding HTR_TTC locked" tags="HTR_TTC_STATUS"/>
+    <node id="HTR_BC0_LOCKED" mask="0xfff" permission="r" description="'1' if corresponding HTR_BC0 locked" tags="HTR_TTC_STATUS"/>
+  </node>
+  <node id="HTR_IF_STATUS_02" address="0xe0e" permission="r" description="Second HTR_if Status Register" tags="HTR_IF_STATUS_02">
+    <node id="HTR_FAKE_WORD_COUNT" mask="0xffff0000" permission="r" description="HTR fake word count" tags="HTR_IF_STATUS_02"/>
+    <node id="HTR_FAKE_EVENT_COUNT" mask="0xffff" permission="r" description="HTR fake event count" tags="HTR_IF_STATUS_02"/>
+  </node>
+  <node id="HTR_IF_STATUS_03" address="0xe0f" permission="r" description="Third HTR_if status" tags="HTR_IF_STATUS_03">
+    <node id="HTR_EVENT_COUNT" mask="0xff0000" permission="r" description="HTR Event Count" tags="HTR_IF_STATUS_03"/>
+    <node id="HTR_FAKE_HEADER_COUNT" mask="0xffff" permission="r" description="HTR fake header count" tags="HTR_IF_STATUS_03"/>
+  </node>
+  <node id="HTR_IF_STATUS_04" address="0xe10" permission="r" description="Fourth HTR_if status" tags="HTR_IF_STATUS_04">
+    <node id="HTR_EVN_RA" mask="0x1ff0000" permission="r" description="HTR EvN Read Address" tags="HTR_IF_STATUS_04"/>
+    <node id="HTR_EVN_WA" mask="0x1ff" permission="r" description="HTR EvN Write Address" tags="HTR_IF_STATUS_04"/>
+  </node>
+  <node id="HTR_IF_STATUS_05" address="0xe11" permission="r" description="Fifth HTR_if status" tags="HTR_IF_STATUS_05">
+    <node id="HTR_EVN" mask="0xffffff" permission="r" description="HTR EvN" tags="HTR_IF_STATUS_05"/>
+  </node>
+  <node id="HTR_IF_STATUS_06" address="0xe12" permission="r" description="Sixth HTR_if status" tags="HTR_IF_STATUS_06">
+    <node id="HTR_CDF_RA" mask="0x1ff0000" permission="r" description="HTR CDF Read Address" tags="HTR_IF_STATUS_06"/>
+    <node id="HTR_CDF_WA" mask="0x1ff" permission="r" description="HTR CDF Write Address" tags="HTR_IF_STATUS_06"/>
+  </node>
+  <node id="HTR_IF_STATUS_07" address="0xe13" permission="r" description="Seventh HTR_if Status" tags="HTR_IF_STATUS_07">
+    <node id="HTR_EVN_EMPTY" mask="0x40000000" permission="r" description="HTR EvN Empty" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_EVENT_AVL" mask="0x20000000" permission="r" description="HTR event available" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_TRAILER_SENT" mask="0x10000000" permission="r" description="HTR Trailers Sent" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_EC_CDF_RA" mask="0x8000000" permission="r" description="HTR EC_CDF Read Address" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_SEL_HTR_DATA" mask="0x4000000" permission="r" description="HTR Select Data" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_SEL_HEADER" mask="0x2000000" permission="r" description="HTR Select Header" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_SEL_EVN" mask="0x1800000" permission="r" description="HTR Select EvN" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_SEL_CDF" mask="0x400000" permission="r" description="HTR Select CDF" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_SEL_TRAILER" mask="0x380000" permission="r" description="HTR Select Trailer" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_HEAD_AND_TAIL" mask="0x60000" permission="r" description="HTR Head and Tail" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_SEND_EVENT" mask="0x10000" permission="r" description="HTR SendEvent" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_FIRST_AMC" mask="0xf000" permission="r" description="HTR First AMC" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_NEXT_A" mask="0xf00" permission="r" description="HTR Next Address" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_NEXT" mask="0xf0" permission="r" description="HTR Next" tags="HTR_IF_STATUS_07"/>
+    <node id="HTR_SELECT" mask="0xf" permission="r" description="HTR Select          " tags="HTR_IF_STATUS_07"/>
+  </node>
+  <!-- Need to group registers -->
+  <!--Need to distribute these registers-->    
+  <node id="TTC_DWNSTRM_FLSH" address="0x1" mask="0x2000" permission="rw" description="if '1', send all data to downstream when ttc reset is received" tags="CONTROL1"/>
+  <node id="SLINK" address="0x1" mask="0x2" permission="rw" description="'1' enables SLINK" tags="CONTROL1"/>
+  <node id="READ_BACK" address="0x2" mask="0xff0000" permission="r" description="Read back what was written to" tags="CONTROL2"/>
+  <node id="CONTROL4" address="0x4" permission="rw" description="control register 0x4" tags="CONTROL4">
+    <node id="SLINK_ID" mask="0xffff0000" permission="r" description="SLINK ID" tags="CONTROL4"/>
+    <node id="DIS_TTS_TRANS" mask="0x8000" permission="rw" description="'1' disables TTS transmitter     " tags="CONTROL4"/>
+    <node id="DIS_SLINK_TRANS" mask="0x4000" permission="rw" description="'1' disables SLINK transmitter	  " tags="CONTROL4"/>
+    <node id="DIS_SLINK_SPR_TRANS" mask="0x2000" permission="rw" description="'1' disables SLINK spare transmitter" tags="CONTROL4"/>
+    <node id="DIS_SFP_ETHER_TRANS" mask="0x1000" permission="rw" description="'1' disables SFP Ethernet transmitter" tags="CONTROL4"/>
+    <node id="TTS_TXFALUT" mask="0x800" permission="r" description="'1' TTS TxFault" tags="CONTROL4"/>
+    <node id="SLINK_TXFAULT" mask="0x400" permission="r" description="'1' SLINK TxFault" tags="CONTROL4"/>
+    <node id="SLINK_SPR_TXFAULT" mask="0x200" permission="r" description="'1' SLINK spare TxFault" tags="CONTROL4"/>
+    <node id="SFP_ETHER_TXFAULT" mask="0x100" permission="r" description="'1' SFP Ethernet TxFault" tags="CONTROL4"/>
+    <node id="TTC_LOS_LOL" mask="0x800" permission="r" description="'1' indicates TTC_LOS or TTC_LOL" tags="CONTROL4"/>
+    <node id="SLINK_REC_LOST" mask="0x400" permission="r" description="'1' SLINK Receiver Signal Lost " tags="CONTROL4"/>
+    <node id="SLINK_SPR_REC_LOST" mask="0x200" permission="r" description="'1' SLINK spare receiver signal lost" tags="CONTROL4"/>
+    <node id="SFP_ETHER_REC_LOST" mask="0x100" permission="r" description="'1' SFP Ethernet Receiver signal lost" tags="CONTROL4"/>
+    <node id="TTC_TTS_SFP_ABS" mask="0x80" permission="r" description="'1' TTC/TTS SFP absent" tags="CONTROL4"/>
+    <node id="SLINK_SFP_ABS" mask="0x40" permission="r" description="'1' SLINK SFP absent" tags="CONTROL4"/>
+    <node id="SLINK_SPR_SFP_ABS" mask="0x20" permission="r" description="'1' SLINK spare SFP absent" tags="CONTROL4"/>
+    <node id="SFP_ETHER_ABS" mask="0x10" permission="r" description="'1' Ethernet SFP absent" tags="CONTROL4"/>
+  </node>
+  <node id="CONTROL7" address="0x7" permission="rw" description="control register 0x7" tags="CONTROL7">
+    <node id="SOURCE_ID_RD" mask="0xffffff" permission="r" description="Source ID (read)" tags="CONTROL7"/>
+    <node id="EVT_TY" mask="0xf00000" permission="w" description="evt_ty" tags="CONTROL7"/>
+    <node id="EVT_STAT" mask="0xff000" permission="w" description="evt_stat" tags="CONTROL7"/>
+    <node id="SOURCE_ID_WR" mask="0xfff" permission="w" description="source id (write)" tags="CONTROL7"/>
+  </node>
+  <node id="MEM_STAT_LO_WRD" address="0xa" permission="r" description="Memory Status Register Low Word" tags="MEM_STAT_LO_WRD"/>
+  <node id="MEM_STAT_HI_WRD" address="0xb" permission="r" description="Memory Status Register High Word" tags="MEM_STAT_HI_WRD"/>
+  <node id="CONTROLC" address="0xc" permission="rw" description="control register 0xc" tags="CONTROLC">
+    <node id="SDRAM_PG_NUM" mask="0x1fff" permission="rw" description="SDRAM page number, each pg 64KB" tags="CONTROLC"/>
+    <node id="PG_INC" mask="0x1" permission="rw" description="'1' increments pg num by 128, '0' by 1 (only if run bit is '1')" tags="CONTROLC"/>
+  </node>
+  <node id="TTS_TEST_PATTERN" address="0x19" permission="rw" description="TTS test pattern" tags="TTS_TEST_PATTERN"/>
+  <node id="T1_FPGA_DNA_LO" address="0x1e" permission="r" description="Bits 0-31 of FPGA DNA" tags="T1_FPGA_DNA_LO"/>
+  <node id="T1_FPGA_DNA_HI" address="0x1f" permission="r" description="Bits 32-56 of FPGA DNA     " tags="T1_FPGA_DNA_HI"/>
+</node>

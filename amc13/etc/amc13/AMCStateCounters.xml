@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Generated from temp.csv -->
+<!-- Input fields:  Address LoBit HiBit Permission Name Description P_Status P_Show P_Table P_Row P_Column P_Format-->
+<node id="TOP">
+   <node id="BSY_STATE_TIME_HI" address="0x03" permission="r" description="AMC TTS BSY state time" parameters="Table=AMC_Links;Row=AMC_BSY_time;Column=_2;Status=1;Show=nz"/>
+   <node id="BSY_STATE_TIME_LO" address="0x02" permission="r" description="AMC TTS BSY state time" parameters="Table=AMC_Links;Row=AMC_BSY_time;Column=_2;Status=1;Show=nz"/>
+   <node id="DIS_STATE_TIME_HI" address="0x09" permission="r" description="AMC TTS disconnect state time" parameters="Table=AMC_Links;Row=AMC_DIS_time;Column=_2;Status=1;Show=nz"/>
+   <node id="DIS_STATE_TIME_LO" address="0x08" permission="r" description="AMC TTS disconnect state time" parameters="Table=AMC_Links;Row=AMC_DIS_time;Column=_2;Status=1;Show=nz"/>
+   <node id="ERR_STATE_TIME_HI" address="0x07" permission="r" description="AMC TTS ERR state time" parameters="Table=AMC_Links;Row=AMC_ERR_time;Column=_2;Status=1;Show=nz"/>
+   <node id="ERR_STATE_TIME_LO" address="0x06" permission="r" description="AMC TTS ERR state time" parameters="Table=AMC_Links;Row=AMC_ERR_time;Column=_2;Status=1;Show=nz"/>
+   <node id="OFW_STATE_TIME_HI" address="0x01" permission="r" description="AMC TTS OFW state time" parameters="Table=AMC_Links;Row=AMC_OFW_time;Column=_2;Status=1;Show=nz"/>
+   <node id="OFW_STATE_TIME_LO" address="0x00" permission="r" description="AMC TTS OFW state time" parameters="Table=AMC_Links;Row=AMC_OFW_time;Column=_2;Status=1;Show=nz"/>
+   <node id="SYN_STATE_TIME_HI" address="0x05" permission="r" description="AMC TTS SYN state time" parameters="Table=AMC_Links;Row=AMC_SYN_time;Column=_2;Status=1;Show=nz"/>
+   <node id="SYN_STATE_TIME_LO" address="0x04" permission="r" description="AMC TTS SYN state time" parameters="Table=AMC_Links;Row=AMC_SYN_time;Column=_2;Status=1;Show=nz"/>
+</node>

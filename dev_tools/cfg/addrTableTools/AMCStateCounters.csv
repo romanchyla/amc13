@@ -1,0 +1,11 @@
+"Address","LoBit","HiBit","Permission","Name","Description","P_Status","P_Show","P_Table","P_Row","P_Column","P_Format"
+"0x00",0,31,"r","OFW_STATE_TIME_LO","AMC TTS OFW state time",1,"nz","AMC_Links","AMC_OFW_time","_2",
+"0x01",0,31,"r","OFW_STATE_TIME_HI","AMC TTS OFW state time",1,"nz","AMC_Links","AMC_OFW_time","_2",
+"0x02",0,31,"r","BSY_STATE_TIME_LO","AMC TTS BSY state time",1,"nz","AMC_Links","AMC_BSY_time","_2",
+"0x03",0,31,"r","BSY_STATE_TIME_HI","AMC TTS BSY state time",1,"nz","AMC_Links","AMC_BSY_time","_2",
+"0x04",0,31,"r","SYN_STATE_TIME_LO","AMC TTS SYN state time",1,"nz","AMC_Links","AMC_SYN_time","_2",
+"0x05",0,31,"r","SYN_STATE_TIME_HI","AMC TTS SYN state time",1,"nz","AMC_Links","AMC_SYN_time","_2",
+"0x06",0,31,"r","ERR_STATE_TIME_LO","AMC TTS ERR state time",1,"nz","AMC_Links","AMC_ERR_time","_2",
+"0x07",0,31,"r","ERR_STATE_TIME_HI","AMC TTS ERR state time",1,"nz","AMC_Links","AMC_ERR_time","_2",
+"0x08",0,31,"r","DIS_STATE_TIME_LO","AMC TTS disconnect state time",1,"nz","AMC_Links","AMC_DIS_time","_2",
+"0x09",0,31,"r","DIS_STATE_TIME_HI","AMC TTS disconnect state time",1,"nz","AMC_Links","AMC_DIS_time","_2",

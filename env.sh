@@ -1,0 +1,18 @@
+if [[ $_ == $0 ]]; then  
+  echo "$0 is meant to be sourced:"
+  echo "  source $0"
+  exit 0
+fi
+
+AMC13_STANDALONE_ROOT=$( readlink -f $(dirname $BASH_SOURCE)/ )
+CACTUS_ROOT=/opt/cactus
+
+PATH="${AMC13_STANDALONE_ROOT}/tools/bin:${PATH}"
+
+PYTHONPATH="${AMC13_STANDALONE_ROOT}/python/pkg:${PYTHONPATH}"
+
+LD_LIBRARY_PATH="${CACTUS_ROOT}/lib/:${LD_LIBRARY_PATH}"
+LD_LIBRARY_PATH="${AMC13_STANDALONE_ROOT}/amc13/lib/:${LD_LIBRARY_PATH}"
+LD_LIBRARY_PATH="${AMC13_STANDALONE_ROOT}/tools/lib/:${LD_LIBRARY_PATH}"
+
+export AMC13_STANDALONE_ROOT CACTUS_ROOT PATH LD_LIBRARY_PATH PYTHONPATH
