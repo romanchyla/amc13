@@ -25,19 +25,15 @@ def compare(v, w):
                 x = kv[k]
                 if v != x:
                
-                   output[k] = '***REGISTERS CHANGED***   {0} <> {1}'.format(x, v) # vala  <>  valb           
+                   output[k] = '{0} <> {1}'.format(x, v)           
                    
             else:
                  kv[k] = '[], {0}'.format(v)
                 
                 
-    #keys = sorted(output.keys())
-    #for k in keys:	    		
-     #   print k, output[k]
-
-    keys = sorted(output.keys())
-    for k in keys:	    		
-        print k, output[k]
+    sorted_items = sorted(output.items(), key=lambda x: x[1])
+    for k,v in sorted_items:	    		
+        print '%40s    %s' % (k,v)
     
 if __name__ == '__main__':
     compare(sys.argv[1], sys.argv[2])
