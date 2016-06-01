@@ -1,0 +1,5 @@
+.project
+.pydev*
+virtualenv
+*.egg-info
+*.pyc
