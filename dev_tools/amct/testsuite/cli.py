@@ -3,7 +3,7 @@
 import click
 import tabulate
 from amct import utils, config
-
+from amct.testsuite.runner import AMCStandardRunner
 
 G = {}
 
@@ -19,5 +19,17 @@ def cli(config):
 def run(name):
     """Run test-suite against AMC13. The tests are to be found
     inside `ROOT/testsuites` folder."""
-    pass
+    
+    # the idea is to create a test runner, it will discover all
+    # files from a dedicated folder; those files should be amc
+    # commands
+    runner = AMCStandardRunner(G, name)
+    runner.run()
+    
+    # if we got here, it means the test was successful
+    if not G.get('verbose'):
+        runner.cleanup()
+        print 'Testsuite {0} finished OK.'
+    else:
+        print 'Testsuite {0} finished OK, results can be found in: {1}'.format(name, runner.tmpdir)
     
