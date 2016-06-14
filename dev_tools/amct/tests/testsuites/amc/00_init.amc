@@ -1,0 +1,4 @@
+stop
+wv CONF.AMC.FAKE_DATA_SIZE 0x10000
+en 1-12 f t
+q

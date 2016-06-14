@@ -10,6 +10,8 @@ setup(name='amct',
           'netifaces==0.10.4',
           'tabulate==0.7.5',
           'requests==2.9.1',
+          'pytest',
+          'mock'
       ],
       entry_points={
           'console_scripts': [

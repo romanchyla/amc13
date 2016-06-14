@@ -16,14 +16,16 @@ def cli(config):
 
 @cli.command()
 @click.option('-n', '--name', default=config.DEFAULT_TEST_SUITE)
-def run(name):
+@click.option('-i', '--ip', default=None)
+@click.option('-x', '--port', default=None)
+def run(name, ip, port):
     """Run test-suite against AMC13. The tests are to be found
     inside `ROOT/testsuites` folder."""
     
     # the idea is to create a test runner, it will discover all
     # files from a dedicated folder; those files should be amc
     # commands
-    runner = AMCStandardRunner(G, name)
+    runner = AMCStandardRunner(G, name, ip, port)
     runner.run()
     
     # if we got here, it means the test was successful
