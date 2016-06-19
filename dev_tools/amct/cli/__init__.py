@@ -29,6 +29,10 @@ def cli(ctx, verbose, debug, log_level, config):
     if debug:
         print 'Config loaded from {0}'.format(config)
         print json.dumps(conf, indent=2)
+    conf.setdefault('CONFIG', debug)
+    conf.setdefault('VERBOSE', verbose)
+    conf.setdefault('LOG_LEVEL', log_level)
+    
     ctx.obj = conf
 
 # expose nested sections
