@@ -4,6 +4,7 @@ import click
 import tabulate
 from amct import utils, config
 from amct.testsuite.runner import AMCStandardRunner
+from amct.firmware.utils import get_ip_from_slot
 
 G = {}
 
@@ -18,10 +19,13 @@ def cli(config):
 @click.option('-n', '--name', default=config.DEFAULT_TEST_SUITE)
 @click.option('-i', '--ip', default=None)
 @click.option('-x', '--port', default=None)
-def run(name, ip, port):
+@click.option('-s', '--slot', default=None)
+def run(name, ip, port, slot):
     """Run test-suite against AMC13. The tests are to be found
     inside `ROOT/testsuites` folder."""
-    
+    if slot:
+        hexIP,decIP = get_ip_from_slot(slot)
+        ip = decIP
     # the idea is to create a test runner, it will discover all
     # files from a dedicated folder; those files should be amc
     # commands

@@ -74,8 +74,6 @@ class AMCStandardRunner(object):
     '''
     Standard implementation which compares output stdin/stdout.
     '''
-
-
     def __init__(self, config, suite_name, ip=None, port=None):
         self.config = config
         self.suite_name = suite_name
@@ -159,7 +157,7 @@ class AMCStandardRunner(object):
         if self.ip:
             return '{0} -i {1} -x '.format(c.get('DEFAULT_AMC_TOOL', 'AAMTool'), self.ip)
         elif self.port:
-            return '{0} -c {1} -x'.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), self.port)
+            return '{0} -c {1} -x'.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), self.port
         else:
             return '{0} -c {1} -x'.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), c.get('DEFAULT_PORT'))
             

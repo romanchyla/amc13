@@ -30,7 +30,9 @@ class TestAMCStandardRunner(TestCase):
 
         self.assertEquals(str(mockeroo.call_args_list[1]),
         "call('AMCTool -c 192.168.1.0 -x {0}/amc/01_trig.amc')".format(self.testsuite_dir))
-        
+         
+#        self.assertEquals(str(mockeroo.call_args_list[1]),
+ #       "call('AMCTool -c 192.168.1.0 -x {0}/amc/10_mon_demo.amc')".format(self.testsuite_dir))        
 
     @mock.patch.object(AMCStandardRunner, 'check_results')
     def test_expected(self, mocked):

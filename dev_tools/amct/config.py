@@ -1,10 +1,10 @@
 import os, sys
 
-AMCT_ROOT = os.path.abspath(os.path.join(__file__), '..')
-DEVTOOLS_ROOT = os.path.abspath(os.path.join(__file__), '../../')
+AMCT_ROOT = os.path.abspath(os.path.join(os.path.abspath(__file__), '../testsuites'))
+DEVTOOLS_ROOT = os.path.abspath(os.path.join(os.path.abspath(__file__), '../../'))
 
 DEFAULT_TESTSUITE_DIR = DEVTOOLS_ROOT + '/testsuites'
-DEFAULT_IP = '192.168.1.0'
+DEFAULT_IP = '192.168.1.41'
 DEFAULT_PORT = '161/c'
 DEFAULT_TESTSUITE_DIR = ''
 

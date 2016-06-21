@@ -1,4 +1,10 @@
 #!/bin/env python
+from optparse import OptionParser
+import systemVars as sv
+import os as os
+import time as time
+import subprocess as subprocess
+import shlex as shlex
 
 try:
     import uhal
@@ -19,3 +25,22 @@ def get_amc_version(xml_config):
     
     return (hex(device.read(device.Board.T1, 'STATUS.FIRMWARE_VERS')),
             hex(device.read(device.Board.T2, 'STATUS.FIRMWARE_VERS')))
+
+def get_ip_from_slot(slot, cmd_base=0x32, cmd=0x34, spi=0, addr_lo=0xb, addr_hi=0x0, addr_len=0x4):
+    """ readIP function will transfer the slot numbers into the ip. """
+    if(slot > 13 or slot < 1):
+        raise Exception("Slot number must be 1-13")
+    elif(slot == 13):
+        ipmb = 0xa4
+    else:
+        ipmb = (0x70+(2*slot))
+    IPMI_BASE = "ipmitool -H '' -U '' -P '' -T 0x%x -b %d -t 0x%x" % (0x82, 7, ipmb)
+    IPMI_INCANTATION = "%s raw 0x%02x 0x%02x %d %d %d %d" % (ipmi_base, cmd_base, cmd, spi, addr_lo, addr_hi, addr_len)
+    args = shlex.split(IPMI_INCANTATION)
+    p = subprocess.Popen(args, stdout=subprocess.PIPE)
+    out, err = p.communicate()
+    hexIP = shlex.split(out)
+    decIP = []
+    for i in hexIP:
+        decIP.append(int(i, 16))
+    return hexIP, ".".join(decIP)
