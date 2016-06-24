@@ -1,0 +1,22 @@
+connect 86/c
+connect 258/c
+#-- first configure the sender
+sel 1
+wv 0x18 0x2200
+wv 0x19 0x2500
+rg
+#-- now configure the receiver
+sel 0
+#-- turn off run mode
+stop
+#-- disable TTS from AMC
+wv CONF.AMC.TTS_DISABLE_MASK 0xfff
+#-- setup 100Hz random triggers
+localL1A r 100
+#-- set over-write mode
+wv CONF.EVB.MON_FULL_OVERWRITE 1
+#-- configure for a run
+en 12 t
+st
+lt c
+

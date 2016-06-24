@@ -1,0 +1,82 @@
+"""For running set of tests against AMC13."""
+
+import click
+import tabulate
+from amct import utils, config
+from amct.testsuite.runner import AMCStandardRunner
+from amct.firmware.utils import get_ip_from_slot
+from tabulate import tabulate
+import texttable
+import asciitable
+from texttable import Texttable
+import re
+from sys import argv
+
+
+#tab = tt.TextTable()
+G = {}
+
+@click.group(name='testsuite')
+@click.pass_obj
+def cli(config):
+    """Run predefined test-suites against AMC13 boards."""
+    G.update(config)
+
+
+@cli.command()
+@click.option('-n', '--name', default=config.DEFAULT_TEST_SUITE)
+@click.option('-i', '--ip', default=None)
+@click.option('-x', '--port', default=None)
+@click.option('-s', '--slot', default=None, type=int)
+def run(name, ip, port, slot):
+    """Run test-suite against AMC13. The tests are to be found
+    inside `ROOT/testsuites` folder."""
+    #G['DEBUG']= True
+    if slot:
+        hexIP,decIP = get_ip_from_slot(slot)
+        ip = decIP
+    # the idea is to create a test runner, it will discover all
+    # files from a dedicated folder; those files should be amc
+    # commands
+    runner = AMCStandardRunner(G, name, ip, port)
+    runner.run()
+    team_list=("FED ID","Channel", "Orbit #", "Bunch X-ing", "Event #", "Event Size", "Header", "Trailer")
+    runner.results ="{:>15}" * (len(teams_list) + 1)
+    print(runner.results.format("", *teams_list))
+    for team, row in zip(teams_list, data):
+        print(runner.results.format(team, *row))
+    #log = open("xxxx.txt", "w")
+    #print >>log, runner.results
+    #tab = tt.TextTable()
+    #runner.results = Texttable()
+    #runner.results = texttable.Texttable()
+    #runner.results.set_cols_width([18,35,15])
+    #runner.results.set_cols_align(['l','r','c'])
+    #runner.results.set_cols_valign(['t','b', 'm'])
+    #runner.results.set_deco(runner.results.HEADER | runner.results.VLINES)
+    #runner.results.set_chars(['-','|','+','#'])
+    #print runner.results
+    #dosya = open("adres.txt")
+    #dosya = open("xxxx.txt", "w")
+    #print >>dosya, runner.results
+    #for i in dosya.readlines():
+    #    nesne = re.search("(\w+)\s+:\s(\w+)\s+(\d+)",i)
+    #if nesne:
+    #    print "%s > %s"%(nesne.group(1), nesne.group(3))
+    #print tabulate(runner.results, headers=["FED ID","Channel", "Orbit #", "Bunch X-ing", "Event #", "Event Size", "Header", "Trailer"])
+    # headers=("FED ID","Channel", "Orbit #", "Bunch X-ing", "Event #", "Event Size", "Header", "Trailer"))
+    #print tabulate(runner.results, tablefmt="html")
+    #print runner.results.draw() 
+    #data = asciitable.read(table) 
+    #print format(runner.results) 
+   # print (runner.results.format(FED ID, Channel, Orbit #, Bunch X-ing, Event #, Event Size, Header, Trailer))
+ #print (runner.results.format("FED ID","Channel", "Orbit #", "Bunch X-ing", "Event #", "Event Size", "Header", "Trailer"))
+#
+#
+ #   # if we got here, it means the test was successful
+    if not G.get('verbose'):
+        runner.cleanup()
+        print 'Testsuite {0} finished OK.'
+    else:
+        print 'Testsuite {0} finished OK, results can be found in: {1}'.format(name, runner.tmpdir)
+    

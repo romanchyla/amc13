@@ -1,0 +1,1 @@
+[{'amc': ('LANG=en_US.UTF-8\nLC_CTYPE="en_US"\nLC_NUMERIC="en_US"\nLC_TIME="en_US"\nLC_COLLATE="en_US"\nLC_MONETARY="en_US"\nLC_MESSAGES="en_US"\nLC_PAPER="en_US"\nLC_NAME="en_US"\nLC_ADDRESS="en_US"\nLC_TELEPHONE="en_US"\nLC_MEASUREMENT="en_US"\nLC_IDENTIFICATION="en_US"\nLC_ALL=en_US\n', '/bin/sh: AMC13Tool2.exe: command not found\n')}]

@@ -1,0 +1,20 @@
+#-- first configure the sender, random size small events
+sel 1
+wv 0x18 4
+wv 0x19 20
+rg
+#-- now configure the receiver
+sel 0
+#-- turn off run mode
+stop
+#-- disable TTS from AMC
+wv CONF.AMC.TTS_DISABLE_MASK 0xfff
+#-- setup 100Hz random triggers
+localL1A r 1000
+#-- set over-write mode
+wv CONF.EVB.MON_FULL_OVERWRITE 0
+#-- prescale every 100000 events
+prescale 0 0
+#-- configure for a run
+en 12 t
+lt c
