@@ -35,9 +35,15 @@ def run(name, ip, port, slot):
     runner.run()
     #log = open("deneme.txt", "w")
     #print >>log, runner.results
+<<<<<<< HEAD
     #print runner.results
     print tabulate(runner.results[0])
     #print tabulate.tabulate(runner.results[0])
+=======
+    print runner.results
+    #print tabulate(runner.results)
+    #print tabulate.tabulate(runner.results)
+>>>>>>> 658a836b63c05ee62af57addbaac22d79f34baac
     # if we got here, it means the test was successful
     if not G.get('verbose'):
         runner.cleanup()

@@ -32,7 +32,11 @@ def get_ip_from_slot(crate_ip, slot, cmd_base=0x32, cmd=0x34, spi=0, addr_lo=0xb
         ipmb = 0xa4
     else:
         ipmb = (0x70+(2*slot))
+<<<<<<< HEAD
     ipmi_base = "ipmitool -H '%s' -U '' -P '' -T 0x%x -b %d -t 0x%x" % (crate_ip, 0x82, 7, ipmb)
+=======
+    ipmi_base = "ipmitool -H '' -U '' -P '' -T 0x%x -b %d -t 0x%x" % (0x82, 7, ipmb)
+>>>>>>> 658a836b63c05ee62af57addbaac22d79f34baac
     IPMI_INCANTATION = "%s raw 0x%02x 0x%02x %d %d %d %d" % (ipmi_base, cmd_base, cmd, spi, addr_lo, addr_hi, addr_len)
     print IPMI_INCANTATION
     args = shlex.split(IPMI_INCANTATION)

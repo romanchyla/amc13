@@ -4,8 +4,15 @@ AMCT_ROOT = os.path.abspath(os.path.join(os.path.abspath(__file__), '../testsuit
 DEVTOOLS_ROOT = os.path.abspath(os.path.join(os.path.abspath(__file__), '../../'))
 
 DEFAULT_TESTSUITE_DIR = DEVTOOLS_ROOT + '/testsuites'
+<<<<<<< HEAD
 DEFAULT_IP = '192.168.1.83'
 DEFAULT_CRATE_IP = '192.168.1.41'
+=======
+#DEFAULT_IP = '192.168.1.41'
+#DEFAULT_PORT = '161/c'
+#DEFAULT_IP = '192.168.3.122'
+DEFAULT_IP = '192.168.1.83'
+>>>>>>> 658a836b63c05ee62af57addbaac22d79f34baac
 DEFAULT_PORT = '086/c'
 DEFAULT_SLOT = '13'
 DEFAULT_CONNECTION_XML = 'TODO'
