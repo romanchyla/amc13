@@ -4,12 +4,12 @@ AMCT_ROOT = os.path.abspath(os.path.join(os.path.abspath(__file__), '../testsuit
 DEVTOOLS_ROOT = os.path.abspath(os.path.join(os.path.abspath(__file__), '../../'))
 
 DEFAULT_TESTSUITE_DIR = DEVTOOLS_ROOT + '/testsuites'
-DEFAULT_IP = '192.168.1.41'
-DEFAULT_PORT = '161/c'
-DEFAULT_TESTSUITE_DIR = ''
-
+DEFAULT_IP = '192.168.1.83'
+DEFAULT_CRATE_IP = '192.168.1.41'
+DEFAULT_PORT = '086/c'
+DEFAULT_SLOT = '13'
 DEFAULT_CONNECTION_XML = 'TODO'
 
 DEFAULT_TEST_SUITE = 'hello'
 
-DEFAULT_AMC_TOOL = 'AMCTool'
+DEFAULT_AMC_TOOL = 'locale;LD_LIBRARY_PATH=/home/semiray/python_update/amc13/tools/lib/:/home/semiray/python_update/amc13/amc13/lib/:/opt/cactus/lib/; AMC13Tool2.exe'

@@ -142,24 +142,28 @@ class AMCStandardRunner(object):
         Will execute commands using AMCTool and collect output
         into a temp folder.type
         """
+        
         if type == 'amc':
             out, err = self._exec('{0} {1}'.format(self._get_amc_exec(), test.get_path() + '.amc'))
             test.add_results(type, out, err)
         elif type == 'sh':
-            out, err = self._exec('{0} -c "{1}"'
+            out, err = self._exec('{1}'
                 .format(self.config.get('DEFAULT_SHELL', '/bin/sh'), test.get_path() + '.sh'))
             test.add_results(type, out, err)
         else:
             raise AMCException('Unknown type {0}'.format(type))
-            
+        if err != '' and 'error' in err.lower():
+            raise AMCException('error exacuting {0}:{1}'.format(type,err))
+
+  
     def _get_amc_exec(self):
         c = self.config
         if self.ip:
-            return '{0} -i {1} -x '.format(c.get('DEFAULT_AMC_TOOL', 'AAMTool'), self.ip)
+            return '{0} -c {1} -X '.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), self.ip)
         elif self.port:
-            return '{0} -c {1} -x'.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), self.port
+            return '{0} -c {1} -X'.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), self.port)
         else:
-            return '{0} -c {1} -x'.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), c.get('DEFAULT_PORT'))
+            return '{0} -c {1} -X'.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), c.get('DEFAULT_PORT'))
             
     def _exec(self, cmd_line):
         
@@ -171,9 +175,9 @@ class AMCStandardRunner(object):
         env['AMCT_TEMP_DIR'] = self.tmpdir
         env['AMCT_TEST_NUM'] = self.run_number
         env['AMCT_TEST_NAME'] = self.test_name
-        
+        #env['AMC13_ADDRESS_TABLE_PATH'] = '/home/semiray/amc13/amc13/etc/amc13/' #TODO FIX
         for k,v in env.items():
-            env[k] = json.dumps(v)
+            env[k] = str(v)
             
         proc = subprocess.Popen(cmd_line, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True) # I'm assuming our code can be trusted
         def terminator(proc):

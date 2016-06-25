@@ -1,2 +1,8 @@
-lt 10 50
+rg
+rc
+en 1-12 f t
+localL1A o 1
+lt 3
+status
+re
 q
