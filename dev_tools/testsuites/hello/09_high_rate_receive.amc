@@ -1,0 +1,19 @@
+stop
+# correct slot#
+en 4,5,9,11,12
+# disable AMC TTS
+wv CONF.AMC.TTS_DISABLE_MASK 0
+# stop when mon buffer full
+wv CONF.EVB.MON_FULL_STOP_EVB 1
+# random 100khz rate
+localL1A r 100000
+# initial status
+st
+# start triggers
+lt c
+sleep 1
+# stop triggers
+lt d
+st
+df test.dat
+q
