@@ -159,7 +159,15 @@ class AMCStandardRunner(object):
     def _get_amc_exec(self):
         c = self.config
         if self.ip:
+<<<<<<< HEAD
             return '{0} -c {1} -X '.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), self.ip)
+=======
+<<<<<<< HEAD
+            return '{0} -c {1} -X '.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), self.ip)
+=======
+            return '{0} -i {1} -X '.format(c.get('DEFAULT_AMC_TOOL', 'AAMTool'), self.ip)
+>>>>>>> 658a836b63c05ee62af57addbaac22d79f34baac
+>>>>>>> d34c39d0d5c031a00c9e399207067b96ccde2b5c
         elif self.port:
             return '{0} -c {1} -X'.format(c.get('DEFAULT_AMC_TOOL', 'AMCTool'), self.port)
         else:
