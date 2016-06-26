@@ -3,3 +3,9 @@
 virtualenv
 *.egg-info
 *.pyc
+.cache
+dist
+*.o
+*.d
+*.obj
+*.log

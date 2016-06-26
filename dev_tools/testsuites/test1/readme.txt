@@ -1,0 +1,1 @@
+Create fake data, set local trigger and read.

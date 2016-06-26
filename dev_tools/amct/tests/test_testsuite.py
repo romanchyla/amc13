@@ -26,10 +26,10 @@ class TestAMCStandardRunner(TestCase):
         runner.run()
         
         self.assertEquals(str(mockeroo.call_args_list[0]),
-        "call('AMCTool -c 192.168.1.0 -x {0}/amc/00_init.amc')".format(self.testsuite_dir))
+        "call('AMCTool -c 192.168.1.0 -X {0}/amc/00_init.amc')".format(self.testsuite_dir))
 
         self.assertEquals(str(mockeroo.call_args_list[1]),
-        "call('AMCTool -c 192.168.1.0 -x {0}/amc/01_trig.amc')".format(self.testsuite_dir))
+        "call('AMCTool -c 192.168.1.0 -X {0}/amc/01_trig.amc')".format(self.testsuite_dir))
          
 #        self.assertEquals(str(mockeroo.call_args_list[1]),
  #       "call('AMCTool -c 192.168.1.0 -x {0}/amc/10_mon_demo.amc')".format(self.testsuite_dir))        
