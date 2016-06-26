@@ -14,6 +14,7 @@ Installation instructions:
     * cd ./dev_tools
     * virtualenv virtualenv
     * source virtualenv/bin/activate
+    * pip install --upgrade pip
     * python setup.py develop
 
 Note, if you want to install `amct` package into your normal python installation, just do: `python setup.py install`.
@@ -26,6 +27,6 @@ Note, if you want to install `amct` package into your normal python installation
 Will print help. Usually, tests are organized into suites. You will want to execute them against every AMC13
 board like so:
 
-    $ amct testsuite -i 192.168.0.1 192.168.0.2
+    $ amct testsuite run --name hello --slot 13
     
         

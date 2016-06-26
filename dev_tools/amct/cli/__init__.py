@@ -7,7 +7,7 @@ from amct import utils, config
 from amct.firmware import cli as firmware_cli
 from amct.testsuite import cli as testsuite_cli
 import logging
-import logging.config
+from logutils import dictconfig
 
 """The main command line interface to AMCT; here we initialize and
 set global defaults. Each of the modules of the AMCT have their 
@@ -43,7 +43,7 @@ def cli(ctx, verbose, debug, log_level, config):
         log_level = debug and 'DEBUG' or 'INFO'
         for k,v in log_config.get('handlers', {}).items():
             v['level'] = log_level
-    logging.config.dictConfig(log_config)
+    dictconfig.dictConfig(log_config)
     
     conf = MyDict(conf)
     conf.logger = logging.getLogger(__name__)
