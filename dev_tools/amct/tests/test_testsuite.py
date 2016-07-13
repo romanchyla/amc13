@@ -18,21 +18,6 @@ class TestAMCStandardRunner(TestCase):
                     'DEFAULT_TESTSUITE_DIR': self.testsuite_dir
                     }
         
-        
-    @mock.patch.object(AMCStandardRunner, '_exec')
-    def test_amc(self, mockeroo):
-        mockeroo.return_value = ('foo', '')
-        runner = AMCStandardRunner(self.config, 'amc')
-        runner.run()
-        
-        self.assertEquals(str(mockeroo.call_args_list[0]),
-        "call('AMCTool -c 192.168.1.0 -X {0}/amc/00_init.amc')".format(self.testsuite_dir))
-
-        self.assertEquals(str(mockeroo.call_args_list[1]),
-        "call('AMCTool -c 192.168.1.0 -X {0}/amc/01_trig.amc')".format(self.testsuite_dir))
-         
-#        self.assertEquals(str(mockeroo.call_args_list[1]),
- #       "call('AMCTool -c 192.168.1.0 -x {0}/amc/10_mon_demo.amc')".format(self.testsuite_dir))        
 
     @mock.patch.object(AMCStandardRunner, 'check_results')
     def test_expected(self, mocked):

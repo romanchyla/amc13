@@ -9,11 +9,8 @@ import subprocess
 import threading
 import json
 import logging
-
-class AMCException(Exception): pass
-class AMCRuntimeException(Exception): pass
-class AMCExpectedResult(Exception): pass
-class AMCPartialMatch(Exception): pass
+from ..amctool.commandline import AMCTool
+from ..exceptions import AMCException, AMCExpectedResult, AMCRuntimeException, AMCPartialMatch
 
 class AMCTest(object):
     """Object that holds the commands/expected output"""
@@ -76,6 +73,7 @@ class AMCTest(object):
     def get_results(self, tipe):
         return self.results.get(tipe)
 
+
 class AMCStandardRunner(object):
     '''
     Standard implementation which compares output stdin/stdout.
@@ -90,11 +88,19 @@ class AMCStandardRunner(object):
         
         self.config = config
         self.suite_name = suite_name
-        self.ip_or_port = ip or port or config.get('DEFAULT_PORT')
         self.run_number = 0
         self.test_name = None
         self.results = []
         self.logger = logging.getLogger(__name__ + '.AMCStandardRunner')
+        
+        env = config.copy()
+        env['AMCT_TEMP_DIR'] = self.config.get('AMCT_TEMP_DIR', '/tmp')
+        
+        
+        self.amctool = AMCTool(self.config.get('DEFAULT_AMC_TOOL', 'AMCTool'), 
+                                ip or port or config.get('DEFAULT_PORT'),
+                                env,
+                                timeout = self.config.get('DEFAULT_TIMEOUT', 15))
     
     def run(self):
         """
@@ -108,7 +114,10 @@ class AMCStandardRunner(object):
                 .expected - will compare the output from the .amc|.sh
                       against the output inside the file
         """
-        tests = self._collect_files(os.path.join(self.config.get('DEFAULT_TESTSUITE_DIR'), self.suite_name))
+        
+        tests = self._collect_files(os.path.join(self.config.get('DEFAULT_TESTSUITE_DIR'), 
+                                                 self.suite_name))
+        
         self.logger.debug('Will run %s tests', len(tests))
         self.results = []
         for t in tests:
@@ -155,62 +164,26 @@ class AMCStandardRunner(object):
         
         self.logger.debug('Executing %s', self.test_name)
         
+        env = {}
+        env['AMCT_TEST_NUM'] = self.run_number
+        env['AMCT_TEST_NAME'] = self.test_name
+            
         if type == 'amc':
-            out, err = self._exec('{0} -X {1}'.format(self._get_amc_exec(), test.get_path() + '.amc'))
+            ocode, out, err = self.amctool.execute_amcscript(test.get_path() + '.amc', env)
             test.add_results(type, out, err)
         elif type == 'sh':
-            out, err = self._exec('{1}'
-                .format(self.config.get('DEFAULT_SHELL', '/bin/sh'), test.get_path() + '.sh'))
+            ocode, out, err = self.amctool.execute_cmdline(test.get_path() + '.sh', env)
             test.add_results(type, out, err)
         else:
             raise AMCException('Unknown type {0}'.format(type))
         
+        if ocode != 0:
+            raise AMCException('error exacuting {0}:{1}'.format(type,err))
+
         self.logger.info('STDOUT:\n%s\n%s', out, '=' * 80)
         self.logger.debug('STDERR:\n%s\n%s', err, '+' * 80)
         
-        if err != '' and 'error' in err.lower():
-            raise AMCException('error exacuting {0}:{1}'.format(type,err))
-
-  
-    def _get_amc_exec(self):
-        def make_c(ip_port):
-            if isinstance(ip_port, str):
-                ip_port = [ip_port]
-            s = []
-            for x in ip_port:
-                s.append('-c {0}'.format(x))
-            return ' '.join(s)
-        
-        return '{0} {1}'.format(self.config.get('DEFAULT_AMC_TOOL', 'AMCTool'), make_c(self.ip_or_port))
-            
-    def _exec(self, cmd_line):
-        
-        self.logger.debug('executing: %s', cmd_line)
-        
-        env = os.environ.copy()
-        env.update(self.config)
-        env['AMCT_TEMP_DIR'] = self.config.get('AMCT_TEMP_DIR', '/tmp')
-        env['AMCT_TEST_NUM'] = self.run_number
-        env['AMCT_TEST_NAME'] = self.test_name
-
-        for k,v in env.items():
-            env[k] = str(v)
-        
-        self.logger.debug('ENVIRON:\n%s', json.dumps(env, indent=2))
-        
-        proc = subprocess.Popen(cmd_line, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True) # I'm assuming our code can be trusted
-        def terminator(proc):
-            if proc.poll() is None:
-                return
-            proc.kill()
-            outs, errs = proc.communicate()
-            raise AMCRuntimeException('{0} failed with {1}\n{2}'.format(cmd_line, outs, errs))
-        
-        timer = threading.Timer(self.config.get('DEFAULT_TIMEOUT', 15), terminator, (proc,))
-        outs, errs = proc.communicate()
-        timer.cancel()
-        
-        return (outs, errs)
+    
         
     def check_results(self, test):
         """Will check the collected output against the expected results."""
